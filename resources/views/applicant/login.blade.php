@@ -306,7 +306,7 @@
                        text-xl md:text-5xl text-center uppercase">
                 Open Recruitment
                 <br>
-                Petra Civil Expo 2026
+                Battle Of Minds 2026
             </h1>
 
             <a href="{{ route('applicant.auth') }}"

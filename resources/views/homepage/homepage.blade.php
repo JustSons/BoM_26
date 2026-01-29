@@ -70,7 +70,7 @@
         @include('homepage.partials.penjelasan')
         @include('homepage.partials.divisi')
         @include('homepage.partials.requirement')
-        @include('homepage.partials.timeline')
+        {{-- @include('homepage.partials.timeline') --}}
         {{-- @include('homepage.partials.faq') --}}
         @include('homepage.partials.contact')
         @include('components.joinButton')

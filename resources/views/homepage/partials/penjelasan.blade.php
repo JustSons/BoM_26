@@ -3,11 +3,11 @@
          overflow: visible;
      }
 
-     #aboutContent {
-         animation: fadeInUp 0.8s ease-out forwards;
-     }
+     /* #aboutContent {
+         animation: fadeInUp 1s ease-out forwards;
+     } */
 
-     @keyframes fadeInUp {
+     /* @keyframes fadeInUp {
          from {
              opacity: 0;
              transform: translateY(30px) scale(0.95);
@@ -70,42 +70,38 @@
 
      .badge {
          opacity: 0;
-     }
+     } */
  </style>
  <section id="about"
      class="w-screen min-h-screen relative overflow-hidden flex items-center justify-center px-6 py-20 mt-20">
      <div
-         class="absolute top-0 left-0 w-[25rem] h-[25rem] rounded-full mix-blend-multiply filter blur-3xl opacity-10 bg-green-500 animate-pulse">
+         class="absolute top-0 left-0 w-[25rem] h-[25rem] rounded-full mix-blend-multiply filter blur-3xl opacity-10 bg-[#596c48] animate-pulse">
      </div>
-     <div class="absolute bottom-0 right-0 w-[25rem] h-[25rem] rounded-full mix-blend-multiply filter blur-3xl opacity-10 bg-green-500 animate-pulse"
+     <div class="absolute bottom-0 right-0 w-[25rem] h-[25rem] rounded-full mix-blend-multiply filter blur-3xl opacity-10 bg-[#596c48] animate-pulse"
          style="animation-delay: 2s;"></div>
 
      <div id="aboutContent" class="relative text-center max-w-4xl mx-auto px-4">
          <div
-             class="w-full mx-auto p-8 md:p-12 rounded-3xl bg-white/80 backdrop-blur-md border border-white/20 shadow-2xl ring-1 ring-white/10">
+             class="w-full mx-auto p-8 md:p-12 rounded-3xl bg-[#26392d] bg-gradient-to-r from-[#202c24] via-[#26392d] to-[#324539] backdrop-blur-md border border-white/20 shadow-2xl ring-1 ring-white/10">
              <h1
-                 class="font-return-grid text-4xl sm:text-5xl lg:text-6xl font-bold mb-8 bg-gradient-to-r from-green-600 via-green-500 to-green-300 bg-clip-text text-transparent leading-tight tracking-wider">
-                 PETRA CIVIL EXPO 2026
+                 class="font-return-grid text-4xl sm:text-5xl lg:text-6xl font-bold mb-8 bg-gradient-to-r from-[#6f934e] via-[#6f8c55] to-[#8ba376] bg-clip-text text-transparent leading-tight tracking-wider">
+                 BATTLE OF MINDS 2026
              </h1>
 
              <div id="aboutText"
-                 class="font-organetto space-y-6 text-gray-700 text-base md:text-lg leading-relaxed mb-8">
+                 class="font-raleway text-justify font-bold space-y-6 text-[#d19537] text-sm md:text-lg leading-relaxed mb-8">
                  <p>
-                     <span class="font-semibold text-green-600">Petra Civil Expo</span> is the biggest annual
-                     competition
-                     held by the Civil Engineering Department of Petra Christian University.
+                    Sejalan dengan visi Indonesia Emas 2045, penting bagi generasi muda untuk memahami dan tertarik pada bidang STEM. 
+                     Karena itu, Battle of Minds hadir sebagai lomba matematika dan logika yang dirancang sesuai dengan karakter siswa/i SMA. 
+
                  </p>
                  <p>
-                     Serving as a platform for innovation and collaboration among future engineers, PCE brings together
-                     talented students from across Indonesia to showcase their skills, creativity, and technical
-                     knowledge.
-                 </p>
-                 <p class="font-semibold text-green-600 text-lg md:text-xl">
-                     This event features three main competitions:
+                     Lomba ini bertujuan untuk membantu siswa/i terus berkembang, melatih kemampuan berpikir logis, serta menumbuhkan semangat belajar dan kerja sama dalam bidang akademik. 
+                     Battle of Minds akan diselenggarakan pada Juli 2026 sebagai wadah kompetisi akademik yang menantang, edukatif, dan relevan bagi siswa/i SMA.
                  </p>
              </div>
 
-             <div class="font-organetto flex flex-wrap justify-center gap-4 mt-6">
+             {{-- <div class="font-organetto flex flex-wrap justify-center gap-4 mt-6">
                  <div
                      class="badge px-6 py-3 bg-gradient-to-r from-green-600 via-green-500 to-green-300 border border-green-500 rounded-xl backdrop-blur-sm hover:from-green-700 hover:via-green-600 hover:to-green-400 hover:scale-105 hover:shadow-2xl hover:shadow-green-500/50 hover:-translate-y-1 transition-all duration-5000 ease-out shadow-lg">
                      <span class="text-white font-semibold text-sm md:text-base">Bridge Competition</span>
@@ -119,31 +115,46 @@
                      <span class="text-white font-semibold text-sm md:text-base">Earthquake Resistance Design
                          Competition</span>
                  </div>
-             </div>
+             </div> --}}
          </div>
      </div>
 
  </section>
 
  <script>
+    if (history.scrollRestoration) {
+        history.scrollRestoration = 'manual';
+    }
+    window.onbeforeunload = function () {
+        window.scrollTo(0, 0);
+    }
      document.addEventListener("DOMContentLoaded", () => {
          gsap.registerPlugin(ScrollTrigger);
 
          const aboutContent = document.getElementById("aboutContent");
-         const badges = document.querySelectorAll(".badge");
          const paragraphs = document.querySelectorAll("#aboutText p");
 
-         // Section entrance (zoom + fade)
-         gsap.to(aboutContent, {
-             scrollTrigger: {
-                 trigger: aboutContent,
-                 start: "top 80%",
-             },
-             opacity: 1,
-             scale: 1,
-             duration: 1.4,
-             ease: "power3.out",
-         });
+         ScrollTrigger.refresh();
+        gsap.fromTo(aboutContent, 
+            {
+                opacity: 0, 
+                y: 100, 
+                scale: 0.9 
+            },
+            {
+                opacity: 1,
+                y: 0,
+                scale: 1,
+                duration: 1.4,
+                ease: "power3.out",
+                scrollTrigger: {
+                    trigger: aboutContent,
+                    start: "top 80%",
+                    markers: true,
+                    toggleActions: "play none none reverse" 
+                }
+            }
+        );
 
          // Create overlay
          paragraphs.forEach((p, i) => {
@@ -155,7 +166,7 @@
              p.appendChild(wrapper);
 
              const overlay = document.createElement("span");
-             overlay.className = "absolute bottom-0 left-0 bg-green-500 rounded-sm";
+             overlay.className = "absolute bottom-0 left-0 bg-[#6f8c55] rounded-sm";
              overlay.style.height = "100%";
              overlay.style.width = "100%";
              overlay.style.transformOrigin = i % 2 === 0 ? "right" : "right";
@@ -163,43 +174,21 @@
              overlay.style.zIndex = "5";
              wrapper.appendChild(overlay);
 
-             gsap.fromTo(
-                 p, {
-                     opacity: 0,
-                     y: 40
-                 }, {
-                     opacity: 1,
-                     y: 0,
-                     duration: 1.2,
-                     ease: "power3.out",
-                     delay: i * 0.2,
-                     scrollTrigger: {
-                         trigger: p,
-                         start: "top 85%",
-                     },
-                     onStart: () => {
-                         gsap.to(overlay, {
-                             scaleX: 0,
-                             duration: 1.2,
-                             ease: "power2.out",
-                         });
-                     },
-                 }
-             );
-         });
-
-         // Animate badges
-         gsap.to(badges, {
-             scrollTrigger: {
-                 trigger: aboutContent,
-                 start: "top 80%",
-             },
-             opacity: 1,
-             y: 0,
-             stagger: 0.25,
-             duration: 1.2,
-             ease: "power3.out",
-             delay: 0.5,
+            const tl = gsap.timeline({
+                    scrollTrigger: {
+                        trigger: p,
+                        start: "top 85%",
+                        toggleActions: "play none none reverse", 
+                    }
+                });
+            tl.fromTo(p, 
+                { opacity: 0, y: 40 }, 
+                { opacity: 1, y: 0, duration: 1.2, ease: "power3.out" }
+            )
+            .to(overlay, 
+                { scaleX: 0, duration: 1.2, ease: "power2.out" }, 
+                "<0.1" 
+            );
          });
      });
  </script>

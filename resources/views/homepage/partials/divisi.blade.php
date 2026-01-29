@@ -61,7 +61,7 @@
         position: relative;
         width: 100%;
         height: 100%;
-        transition: transform 0.6s;
+        transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         transform-style: preserve-3d;
         cursor: pointer;
     }
@@ -81,11 +81,11 @@
     }
 
     .card-front {
-        background: linear-gradient(135deg, #4d845a 0%, #9ad640a8 60%);
+        background: linear-gradient(135deg, #202c24 0%, #324539 60%);
         display: flex;
         align-items: center;
         justify-content: center;
-        border: 2px solid #ddd;
+        border: 2px solid #d3d5d2;
     }
 
     .card-front img {
@@ -95,18 +95,20 @@
     }
 
     .card-back {
-        background: linear-gradient(135deg, #3f5542 0%, #4d845a 100%);
+        background: linear-gradient(135deg, #202c24 0%, #324539 100%);
         transform: rotateY(180deg);
         display: flex;
         flex-direction: column;
         padding: 30px 20px;
         color: white;
-        border: 2px solid #ffd620;
+        border: 2px solid #d3d5d2;
     }
 
     .card-back h3 {
         font-size: 1.5rem;
-        color: #ffd620;
+        color: #d19537;
+        font-family: raleway;
+        font-weight: 800;
         margin-bottom: 20px;
         text-transform: uppercase;
         text-align: center;
@@ -116,7 +118,10 @@
     .card-back p {
         font-size: 0.95rem;
         line-height: 1.6;
+        font-family: raleway;
+        font-weight: 400;
         text-align: center;
+        color: #d3d5d2;
         flex: 1;
         display: flex;
         align-items: center;
@@ -131,9 +136,9 @@
         margin-top: 0;
         text-align: center;
         padding: 10px 20px;
-        background: #333;
+        background: #26392d;
         border-radius: 8px;
-        border: 2px solid #333;
+        border: 2px solid #202c24;
         box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
         backdrop-filter: blur(10px);
         transition: all 0.3s ease;
@@ -145,9 +150,10 @@
     }
 
     .title span {
-        color: #ffd620;
+        color: #d3d5d2;
         font-size: 1rem;
-        font-weight: 600;
+        font-family: raleway;
+        font-weight: 700;
     }
 
     .swiper-slide-active .title {
@@ -159,12 +165,13 @@
         position: absolute;
         top: 10px;
         right: 10px;
-        background: rgba(255, 214, 32, 0.9);
-        color: #333;
+        background: #d19537;
+        color: #324539;
         padding: 5px 10px;
         border-radius: 20px;
         font-size: 0.7rem;
-        font-weight: bold;
+        font-family: raleway;
+        font-weight: 700;
         z-index: 5;
     }
 
@@ -254,7 +261,7 @@
 
     <h1 class="font-raleway text-4xl sm:text-5xl lg:text-6xl font-extrabold bg-gradient-to-r text-[#26392d] drop-shadow-[0_0_5px_rgba(50,69,57,0.9)] tracking-wider bg-clip-text  mb-12 leading-tight"
         data-aos="fade-down" data-aos-duration="800" data-aos-easing="ease-out-cubic">
-        DIVISION
+        DIVISIONS
     </h1>
 
     <div class="swiper">

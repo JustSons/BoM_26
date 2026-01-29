@@ -252,7 +252,7 @@
         Divisi
     </h1> --}}
 
-    <h1 class="font-return-grid text-4xl sm:text-5xl lg:text-6xl font-bold bg-gradient-to-r text-white drop-shadow-[0_0_15px_rgba(22,163,74,0.9)] tracking-wider bg-clip-text  mb-12 leading-tight"
+    <h1 class="font-raleway text-4xl sm:text-5xl lg:text-6xl font-extrabold bg-gradient-to-r text-[#26392d] drop-shadow-[0_0_5px_rgba(50,69,57,0.9)] tracking-wider bg-clip-text  mb-12 leading-tight"
         data-aos="fade-down" data-aos-duration="800" data-aos-easing="ease-out-cubic">
         DIVISION
     </h1>
@@ -268,11 +268,27 @@
                     </div>
                     <div class="card-face card-back">
                         <h3>Sponsor</h3>
-                        <p>Divisi yang menjalin kerjasama dengan berbagai pihak guna mendapatkan dukungan dana demi
-                            keberlangsungan acara.</p>
+                        <p>Divisi yang mencari, menjalin, dan mengelola kerja sama 
+                            dengan sponsor serta memastikan pemenuhan hak dan kewajiban sponsor sesuai kesepakatan.</p>
                     </div>
                 </div>
                 <div class="title"><span>Sponsor</span></div>
+            </div>
+
+            <!-- Materi -->
+            <div class="swiper-slide">
+                <div class="card-container">
+                    <div class="card-face card-front">
+                        <img src="{{ asset('assets/logo materi.webp') }}" alt="Materi">
+                        <div class="flip-hint">Click to flip</div>
+                    </div>
+                    <div class="card-face card-back">
+                        <h3>Materi</h3>
+                        <p>Divisi yang bertugas merancang dan menyusun soal-soal yang inovatif, 
+                            berbasis STEM, yang disesuaikan dengan karakteristik siswa/i SMA.</p>
+                    </div>
+                </div>
+                <div class="title"><span>Materi</span></div>
             </div>
 
             <!-- Transkapman -->
@@ -284,7 +300,8 @@
                     </div>
                     <div class="card-face card-back">
                         <h3>Transkapman</h3>
-                        <p>Divisi yang bertanggung jawab atas transportasi, perlengkapan, dan keamanan acara.</p>
+                        <p>Divisi yang bertanggung jawab atas pengadaan dan pengelolaan perlengkapan, pengaturan transportasi, 
+                            serta menjaga keamanan dan ketertiban selama acara berlangsung.</p>
                     </div>
                 </div>
                 <div class="title"><span>Transkapman</span></div>
@@ -299,7 +316,8 @@
                     </div>
                     <div class="card-face card-back">
                         <h3>Acara</h3>
-                        <p>Divisi yang mengkonsep, merencanakan, hingga mengeksekusi acara di hari-H kegiatan.</p>
+                        <p>Divisi yang bertanggung jawab atas perencanaan konsep acara, penyusunan alur kegiatan, 
+                            serta pelaksanaan keseluruhan acara dari awal hingga akhir.</p>
                     </div>
                 </div>
                 <div class="title"><span>Acara</span></div>
@@ -314,8 +332,8 @@
                     </div>
                     <div class="card-face card-back">
                         <h3>Creative</h3>
-                        <p>Divisi yang bertugas untuk membuat video, poster, animasi, dan berbagai aset lainnya yang
-                            mendukung kelancaran acara.</p>
+                        <p>Divisi yang mengelola visual dan kreativitas acara, termasuk desain konten, 
+                            dekorasi, dokumentasi, dan publikasi untuk meningkatkan daya tarik acara.</p>
                     </div>
                 </div>
                 <div class="title"><span>Creative</span></div>
@@ -330,7 +348,8 @@
                     </div>
                     <div class="card-face card-back">
                         <h3>IT</h3>
-                        <p>Divisi yang bertugas untuk membuat website Petra Civil Expo.</p>
+                        <p>Divisi yang menangani kebutuhan teknis berbasis teknologi, seperti sistem pendaftaran, 
+                            pengelolaan data peserta, perangkan lomba, dan dukungan teknis selama acara.</p>
                     </div>
                 </div>
                 <div class="title"><span>IT</span></div>
@@ -345,8 +364,8 @@
                     </div>
                     <div class="card-face card-back">
                         <h3>Sekkonkes</h3>
-                        <p>Divisi yang bertanggung jawab atas data panitia dan peserta. Mereka juga memastikan kesehatan
-                            dan ketersediaan konsumsi bagi panitia dan peserta ketika hari-H kegiatan.</p>
+                        <p>Divisi yang mengelola administrasi dan surat, mengatur konsumsi panitia dan peserta, 
+                            serta menangani kebutuhan kesehatan selama acara.</p>
                     </div>
                 </div>
                 <div class="title"><span>Sekkonkes</span></div>
@@ -361,8 +380,8 @@
                     </div>
                     <div class="card-face card-back">
                         <h3>Public Relation</h3>
-                        <p> Divisi yang bertugas untuk menjalin hubungan dengan pihak eksternal hingga mempromosikan PCE
-                            2026 di berbagai platform.</p>
+                        <p> Divisi yang bertanggung jawab mengelola komunikasi dan informasi acara, serta membangun citra acara melalui media sosial, 
+                            publikasi informasi, dan hubungan peserta, sekolah, serta pihak terkait lainnya.</p>
                     </div>
                 </div>
                 <div class="title"><span>Public Relation</span></div>

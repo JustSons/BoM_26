@@ -84,7 +84,7 @@
          <div
              class="w-full mx-auto p-8 md:p-12 rounded-3xl bg-[#26392d] bg-gradient-to-r from-[#202c24] via-[#26392d] to-[#324539] backdrop-blur-md border border-white/20 shadow-2xl ring-1 ring-white/10">
              <h1
-                 class="font-return-grid text-4xl sm:text-5xl lg:text-6xl font-bold mb-8 bg-gradient-to-r from-[#6f934e] via-[#6f8c55] to-[#8ba376] bg-clip-text text-transparent leading-tight tracking-wider">
+                 class="font-raleway text-4xl sm:text-5xl lg:text-6xl font-extrabold mb-8 bg-gradient-to-r from-[#6f934e] via-[#6f8c55] to-[#8ba376] bg-clip-text text-transparent leading-tight tracking-wider">
                  BATTLE OF MINDS 2026
              </h1>
 

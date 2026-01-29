@@ -1,25 +1,23 @@
 <style>
+    /* Reset & Base */
     .sidebar {
         position: fixed;
         top: 0;
         left: 0;
-        width: 80px;
-        height: 100vh;
-        background: rgba(30, 41, 35, 0.4); 
+        width: 80px; /* Lebar saat tertutup */
+        height: 100vh; /* Gunakan vh agar full layar */
+        background: rgba(30, 41, 35, 0.4); /* Warna dasar agak gelap transparan agar cocok dengan tema hijau */
         backdrop-filter: blur(20px);
         -webkit-backdrop-filter: blur(20px);
-        z-index: 9998;
+        z-index: 9999; /* Pastikan paling atas */
         padding: 6px 14px;
-        transition: all 0.5s cubic-bezier(.02, .89, .52, 1.01);
+        transition: .5s cubic-bezier(.02, .89, .52, 1.01);
         border-right: 1px solid rgba(255, 255, 255, 0.1);
-        overflow: hidden;
-        white-space: nowrap;
     }
 
     .sidebar.active {
-        width: 280px;
-        background: rgba(30, 41, 35, 0.8);
-        box-shadow: 10px 0 30px rgba(0,0,0,0.3);
+        width: 280px; /* Lebar saat terbuka */
+        background: rgba(30, 41, 35, 0.6);
     }
 
     .sidebar .logo-menu {
@@ -32,7 +30,7 @@
         position: relative;
     }
 
-    /* Tombol Toggle Desktop */
+    /* Toggle Button (Hamburger) */
     .sidebar .logo-menu .toggle-btn {
         position: absolute;
         left: 0;
@@ -58,6 +56,7 @@
         width: 100%;
         height: 50px;
         line-height: 50px;
+        position: relative;
     }
 
     .list .list-item a {
@@ -69,7 +68,9 @@
         text-decoration: none;
         color: white;
         transition: all .4s ease;
+        white-space: nowrap;
         position: relative;
+        overflow: hidden; /* Penting untuk efek fill */
     }
 
     /* Ikon */
@@ -79,11 +80,14 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        z-index: 10;
         transition: all 0.4s ease;
     }
     
     .list .list-item a i svg {
-        width: 24px; height: 24px; stroke-width: 2px;
+        width: 24px;
+        height: 24px;
+        stroke-width: 2px;
     }
 
     /* Teks Menu */
@@ -91,7 +95,7 @@
         opacity: 0;
         pointer-events: none;
         transition: .3s;
-        font-family: 'Raleway', sans-serif;
+        font-family: 'Raleway', sans-serif; /* Sesuaikan font Anda */
         font-weight: 600;
         font-size: 1rem;
     }
@@ -102,23 +106,28 @@
         transition-delay: 0.1s;
     }
 
+    /* Hover Effects */
+    .list .list-item a:hover {
+        background: rgba(255, 255, 255, 0.1);
+    }
 
-    .list .list-item a:hover { background: rgba(255, 255, 255, 0.1); }
-    
+    /* Active / Current Section State */
     .list .list-item.current-section a {
-        background: linear-gradient(90deg, rgba(74, 222, 128, 0.2), rgba(74, 222, 128, 0.05));
-        border-left: 4px solid #4ade80;
-    }
-    .list .list-item.current-section a i { color: #4ade80; }
-    .list .list-item.current-section .link-name { color: #4ade80; }
-
-    .auth-divider {
-        margin: 10px 0;
-        border-bottom: 1px solid rgba(255,255,255,0.1);
+        background: linear-gradient(90deg, rgba(74, 222, 128, 0.2), rgba(74, 222, 128, 0.05)); /* Aksen Hijau */
+        border-left: 4px solid #4ade80; /* Hijau terang */
     }
 
-    /* SVG Animation Style */
-    .ham { cursor: pointer; -webkit-tap-highlight-color: transparent; transition: transform 400ms; -moz-user-select: none; }
+    .list .list-item.current-section a i {
+        color: #4ade80;
+        filter: drop-shadow(0 0 8px rgba(74, 222, 128, 0.4));
+    }
+
+    .list .list-item.current-section .link-name {
+        color: #4ade80;
+    }
+
+    /* Hamburger Animation CSS */
+    .ham { cursor: pointer; -webkit-tap-highlight-color: transparent; transition: transform 400ms; -moz-user-select: none; -webkit-user-select: none; -ms-user-select: none; user-select: none; }
     .hamRotate.active { transform: rotate(45deg); }
     .line { fill: none; transition: stroke-dasharray 400ms, stroke-dashoffset 400ms; stroke: #fff; stroke-width: 5.5; stroke-linecap: round; }
     .ham6 .top { stroke-dasharray: 40 172; }
@@ -128,18 +137,23 @@
     .ham6.active .middle { stroke-dashoffset: -71px; }
     .ham6.active .bottom { stroke-dashoffset: -132px; }
 
-    /* Mobile */
-    .mobile-ham-btn {
-        display: none;
+    /* Divider untuk Auth */
+    .auth-divider {
+        margin: 10px 0;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+.mobile-ham-btn {
+        display: none; /* Default Hidden di Desktop */
         position: fixed;
         top: 20px;
         left: 20px;
         width: 50px;
         height: 50px;
-        background: rgba(30, 41, 35, 0.8); 
+        background: rgba(30, 41, 35, 0.8); /* Warna latar tombol */
         backdrop-filter: blur(10px);
         border-radius: 12px;
-        z-index: 10000; 
+        z-index: 10000; /* Paling atas */
         box-shadow: 0 4px 15px rgba(0,0,0,0.3);
         align-items: center;
         justify-content: center;
@@ -147,6 +161,7 @@
         transition: all 0.3s ease;
     }
 
+    /* Overlay Hitam (Saat menu buka di HP) */
     .mobile-overlay {
         position: fixed;
         top: 0; left: 0; width: 100%; height: 100%;
@@ -158,35 +173,40 @@
     }
     .mobile-overlay.show { opacity: 1; visibility: visible; }
 
+
+    /* --- MOBILE RESPONSIVE --- */
     @media screen and (max-width: 1024px) {
+        /* 1. Sidebar Hilang Default */
         .sidebar {
             width: 0;
             padding: 0;
             border: none;
         }
 
+        /* 2. Sidebar Muncul saat Active */
         .sidebar.active {
             width: 280px;
             padding: 6px 14px;
         }
 
-
+        /* 3. Tampilkan Tombol Hamburger Mobile */
         .mobile-ham-btn {
             display: flex;
         }
 
-
+        /* 4. Sembunyikan Toggle Internal (karena sudah ada tombol luar) */
         .sidebar .logo-menu .toggle-btn {
             display: none; 
         }
 
-
+        /* 5. Paksa teks muncul saat sidebar active */
         .sidebar.active .list .list-item .link-name {
             opacity: 1;
         }
 
+        /* 6. Geser tombol hamburger saat sidebar buka (Opsional, biar keren) */
         .mobile-ham-btn.moved {
-            left: 230px; 
+            left: 230px; /* Geser ke kanan mengikuti sidebar */
             background: transparent;
             box-shadow: none;
         }
@@ -214,22 +234,27 @@
 
     <ul class="list">
         @if (session()->has('email'))
-             <li class="list-item">
+            <li class="list-item">
                 <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                    <i><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" x2="9" y1="12" y2="12"/></svg></i>
+                    <i>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" x2="9" y1="12" y2="12"/></svg>
+                    </i>
                     <span class="link-name">Logout</span>
                 </a>
                 <form id="logout-form" action="{{ route('logout') }}" method="GET" class="hidden"></form>
             </li>
-            
         @else
             <li class="list-item">
                 <a href="{{ route('applicant.login') }}">
-                    <i><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" x2="3" y1="12" y2="12"/></svg></i>
+                    <i>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" x2="3" y1="12" y2="12"/></svg>
+                    </i>
                     <span class="link-name">Login</span>
                 </a>
             </li>
         @endif
+
+        <div class="auth-divider"></div>
 
         <li class="list-item">
             <a href="{{ route('applicant.registerNow') }}">
@@ -239,7 +264,6 @@
                 <span class="link-name">Register</span>
             </a>
         </li>
-        <div class="auth-divider"></div>
 
         <li class="list-item" data-section="hero">
             <a href="#hero">
@@ -252,28 +276,45 @@
 
         <li class="list-item" data-section="about">
             <a href="#about">
-                <i><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg></i>
+                <i>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+                </i>
                 <span class="link-name">About Us</span>
             </a>
         </li>
 
         <li class="list-item" data-section="divisi">
             <a href="#divisi">
-                <i><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 2 7l10 5 10-5-10-5Z"/><path d="m2 17 10 5 10-5"/><path d="m2 12 10 5 10-5"/></svg></i>
+                <i>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 2 7l10 5 10-5-10-5Z"/><path d="m2 17 10 5 10-5"/><path d="m2 12 10 5 10-5"/></svg>
+                </i>
                 <span class="link-name">Divisions</span>
             </a>
         </li>
 
         <li class="list-item" data-section="requirement">
             <a href="#requirement">
-                <i><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M15 2H9a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1Z"/><path d="m9 14 2 2 4-4"/></svg></i>
+                <i>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M15 2H9a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1Z"/><path d="m9 14 2 2 4-4"/></svg>
+                </i>
                 <span class="link-name">Requirements</span>
             </a>
         </li>
 
+        {{-- <li class="list-item" data-section="timeline">
+            <a href="#timeline">
+                <i>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21 7.5V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h3.5"/><path d="M16 2v4"/><path d="M8 2v4"/><path d="M3 10h5"/><path d="M17.5 17.5 16 16.3V14"/><circle cx="16" cy="16" r="6"/></svg>
+                </i>
+                <span class="link-name">Timeline</span>
+            </a>
+        </li> --}}
+
         <li class="list-item" data-section="contact">
             <a href="#contact">
-                <i><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></i>
+                <i>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                </i>
                 <span class="link-name">Contact</span>
             </a>
         </li>
@@ -283,67 +324,56 @@
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         const sidebar = document.querySelector('.sidebar');
-        const desktopToggle = document.querySelector('.sidebar .toggle-btn'); 
-        const mobileToggle = document.getElementById('mobileHamBtn'); 
+        const toggleBtn = document.querySelector('.toggle-btn');
+        const mobileToggle = document.getElementById('mobileHamBtn');
         const mobileOverlay = document.getElementById('mobileOverlay');
         const listItems = document.querySelectorAll('.list-item[data-section]');
 
-        function toggleSidebar() {
-            const isActive = sidebar.classList.toggle('active');
-            
-
-            if(desktopToggle) desktopToggle.classList.toggle('active');
-            
-            if(mobileToggle) {
-                mobileToggle.querySelector('.ham').classList.toggle('active');
-                mobileToggle.classList.toggle('moved'); 
-            }
-            if(window.innerWidth <= 1024) {
-                if(mobileOverlay) mobileOverlay.classList.toggle('show');
-            } else {
-                if(mobileOverlay) mobileOverlay.classList.remove('show');
-            }
-        }
-
-        if(desktopToggle) {
-            desktopToggle.addEventListener('click', (e) => {
+        // 1. Toggle Sidebar (Buka/Tutup)
+        if(toggleBtn) {
+            toggleBtn.addEventListener('click', function(e) {
                 e.stopPropagation();
-                toggleSidebar();
+                sidebar.classList.toggle('active');
+                this.classList.toggle('active');
             });
         }
 
-        if(mobileToggle) {
-            mobileToggle.addEventListener('click', (e) => {
-                e.stopPropagation();
-                toggleSidebar();
-            });
-        }
+        // 2. Klik di luar sidebar menutup sidebar
+        document.addEventListener('click', function(e) {
+            if (sidebar.classList.contains('active') && !sidebar.contains(e.target)) {
+                sidebar.classList.remove('active');
+                if(toggleBtn) toggleBtn.classList.remove('active');
+            }
+        });
 
-        if(mobileOverlay) {
-            mobileOverlay.addEventListener('click', () => {
-                if(sidebar.classList.contains('active')) toggleSidebar();
-            });
-        }
-
-
+        // 3. Logic Scroll Spy (Deteksi Section Aktif)
         function updateActiveSection() {
             const scrollPosition = window.scrollY;
             const windowHeight = window.innerHeight;
             
+            // Loop setiap section
             listItems.forEach(item => {
                 const sectionId = item.getAttribute('data-section');
-                const section = document.getElementById(sectionId);
+                const section = document.getElementById(sectionId); // Pastikan ID section ada di HTML body
 
                 if (section) {
                     const rect = section.getBoundingClientRect();
-                    if (rect.top <= windowHeight / 2 && rect.bottom >= windowHeight / 2) {
+                    const top = rect.top;
+                    const bottom = rect.bottom;
+                    
+                    // Logic: Jika bagian atas section melewati tengah layar, aktifkan
+                    // Atau jika section terlihat cukup besar di layar
+                    if (top <= windowHeight / 2 && bottom >= windowHeight / 2) {
+                        // Hapus class active dari semua
                         listItems.forEach(i => i.classList.remove('current-section'));
+                        // Tambah class active ke item ini
                         item.classList.add('current-section');
                     }
                 }
             });
         }
 
+        // 4. Smooth Scroll saat Klik Link
         listItems.forEach(item => {
             const link = item.querySelector('a');
             const href = link.getAttribute('href');
@@ -355,20 +385,23 @@
                     const targetElement = document.getElementById(targetId);
 
                     if (targetElement) {
+                        // Scroll ke tujuan
                         window.scrollTo({
                             top: targetElement.offsetTop, 
                             behavior: 'smooth'
                         });
 
-                        if (window.innerWidth <= 1024 && sidebar.classList.contains('active')) {
-                            toggleSidebar();
-                        }
+                        // Tutup sidebar setelah klik (opsional, bagus untuk UX)
+                        sidebar.classList.remove('active');
+                        if(toggleBtn) toggleBtn.classList.remove('active');
                     }
                 });
             }
         });
 
+        // Jalankan saat scroll
         window.addEventListener('scroll', updateActiveSection);
+        // Jalankan sekali saat load
         updateActiveSection();
     });
 </script>

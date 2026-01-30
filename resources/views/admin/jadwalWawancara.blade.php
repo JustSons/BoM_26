@@ -79,12 +79,12 @@
                     <tr>
                         <th class="border px-4 py-2">Jam/Hari</th>
                         <!-- Looping untuk menampilkan tanggal (misal dari 4-18 Oktober) -->
-                        @for ($i = 23; $i <= 31; $i++)
-                            <th class="border px-4 py-2">{{ $i }} Oktober</th>
+                        @for ($i = 9; $i <= 18; $i++)
+                            <th class="border px-4 py-2">{{ $i }} Februari</th>
                         @endfor
-                        @for ($i = 1; $i <= 4; $i++)
+                        {{-- @for ($i = 1; $i <= 4; $i++)
                             <th class="border px-4 py-2">{{ $i }} November</th>
-                        @endfor
+                        @endfor --}}
                     </tr>
                 </thead>
                 <tbody>
@@ -92,16 +92,16 @@
                     @for ($hour = 7; $hour <= 20; $hour++)
                     <tr>
                         <td class="border px-4 py-2">{{ $hour }}:30</td>
-                        @for ($i = 23; $i <= 31; $i++)
+                        @for ($i = 9; $i <= 18; $i++)
                         <td 
                             class="slot border" 
-                            data-date="{{ '2025-10-' . str_pad($i, 2, '0', STR_PAD_LEFT) }}" 
+                            data-date="{{ '2026-02-' . str_pad($i, 2, '0', STR_PAD_LEFT) }}" 
                             data-hour="{{ sprintf('%02d', $hour) }}" 
                             id="slot-{{ $i }}-{{ $hour }}"
                             onclick="toggleSlot(this)">
                         </td>
                         @endfor
-                         @for ($i = 1; $i <= 4; $i++)
+                         {{-- @for ($i = 1; $i <= 4; $i++)
                         <td 
                             class="slot border" 
                             data-date="{{ '2025-11-' . str_pad($i, 2, '0', STR_PAD_LEFT) }}" 
@@ -109,7 +109,7 @@
                             id="slot-{{ $i }}-{{ $hour }}"
                             onclick="toggleSlot(this)">
                         </td>
-                        @endfor
+                        @endfor --}}
                     </tr>
                     @endfor
                 </tbody>

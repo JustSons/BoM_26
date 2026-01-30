@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>PCE 2026 | Admin Login</title>
+    <title>BoM 2026 | Admin Login</title>
     <link rel="icon" href="{{ asset('assets/logoAja.png') }}">
 
     {{-- TW Elements --}}
@@ -132,7 +132,7 @@
                     Admin Website</h1>
                 <h1
                     class="title-text text-black font-bold text-5xl w-[550px] text-center max-sm:text-2xl max-sm:w-[300px]">
-                    Petra Civil Expo 2026</h1>
+                    Battle Of Minds 2026</h1>
             </div>
             <a href="{{ route('admin.auth') }}"
                 class="text-[#000] button-interact border-2 border-[#000000] active:scale-[0.97] font-semibold drop-shadow-2xl text-2xl max-sm:text-base w-[400px] max-sm:w-[230px] rounded-3xl h-[53px] max-sm:h-[42px] flex justify-center items-center">

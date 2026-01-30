@@ -39,8 +39,8 @@ class AdminScheduleController extends Controller
 
         try {
             $admin = Admin::where('nrp', Session::get('nrp'))->firstOrFail();
-            //tanggal 22 Okt 2025
-            $limitDate = Carbon::create(2025, 10, 22, 23, 59, 0, "Asia/Jakarta");
+            //tanggal 2 Februari 2026 jam 23:59 WIB
+            $limitDate = Carbon::create(2026, 2, 9, 23, 59, 0, "Asia/Jakarta");
             $now = Carbon::now("Asia/Jakarta");
             
             $newSlotsInput = json_decode($request->input('selectedSlots'), true) ?? [];
@@ -98,7 +98,7 @@ class AdminScheduleController extends Controller
                         DB::rollBack();
                         return response()->json([
                             'success' => false,
-                            'message' => "Jadwal pada tanggal $tanggal tidak dapat dihapus karena setelah 22 Oktober 2025."
+                            'message' => "Jadwal pada tanggal $tanggal tidak dapat dihapus karena setelah 9 Februari 2026."
                         ], 409);
                     }
                     //Cek kalau udah di booking, dirollback dan kirim error agar jadwal tidak dihapus sembarangan. (jaga - jaga kalau ada yg main mainin component di frontend)

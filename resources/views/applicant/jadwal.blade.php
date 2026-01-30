@@ -9,7 +9,7 @@
         </button>
       </a>
       <a href="{{ route('applicant.homepage') }}" id="backToHomepage" class="hidden">
-        <button class="px-6 py-2 border-2 bg-[#26392d] border-[#d3d5d2] text-white font-bold card-glowing-border uppercase tracking-widest rounded-full text-sm sm:text-base transition-all duration-300 hover:bg-white hover:text-[#26392d] hover:shadow-lg hover:shadow-[#26392d]/40">
+        <button class="px-6 py-2 border-2 bg-[#26392d] border-[#d3d5d2] text-white font-bold uppercase tracking-widest rounded-full text-sm sm:text-base transition-all duration-300 hover:bg-white hover:text-[#26392d] hover:shadow-lg hover:shadow-[#26392d]/40">
           Back to Homepage
         </button>
       </a>
@@ -46,7 +46,7 @@
           <div class="grid grid-cols-2 gap-3">
             <label class="cursor-pointer">
               <input type="radio" name="interview_mode" value="1" class="peer sr-only" checked>
-              <div class="flex items-center justify-center gap-2 px-4 py-2 border border-teal-400/50 rounded-full text-sm sm:text-base text-white peer-checked:bg-teal-500 peer-checked:shadow-[0_0_15px_rgba(45,212,191,0.5)] transition-all">
+              <div class="flex items-center justify-center gap-2 px-4 py-2 border border-[#4d7fc1] rounded-full text-sm sm:text-base text-white peer-checked:bg-[#68a0ea] peer-checked:shadow-[0_0_15px_#bed0e8] transition-all">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/>
                 </svg>
@@ -55,7 +55,7 @@
             </label>
             <label class="cursor-pointer">
               <input type="radio" name="interview_mode" value="0" class="peer sr-only">
-              <div class="flex items-center justify-center gap-2 px-4 py-2 border border-teal-400/50 rounded-full text-sm sm:text-base text-white peer-checked:bg-teal-500 peer-checked:shadow-[0_0_15px_rgba(45,212,191,0.5)] transition-all">
+              <div class="flex items-center justify-center gap-2 px-4 py-2 border border-[#4d7fc1] rounded-full text-sm sm:text-base text-white peer-checked:bg-[#68a0ea] peer-checked:shadow-[0_0_15px_#bed0e8] transition-all">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
                 </svg>
@@ -65,23 +65,23 @@
           </div>
         </div>
 
-        <div class="bg-cyan-900/30 border border-teal-400/30 rounded-xl p-4 text-sm sm:text-base text-teal-200">
-          <p><span class="font-semibold">ID Line:</span> <a href="https://line.me/ti/p/~{{ $contactPersonLineId }}" target="_blank" class="text-white hover:underline">{{ $contactPersonLineId }}</a></p>
-          <p class="text-teal-300/70 text-xs mt-1">Jika tidak ada jadwal yang sesuai, silakan hubungi ID line di atas</p>
+        <div class="bg-[#596c48] border border-[#47543c] rounded-xl p-4 text-sm sm:text-base text-[#d19537]">
+          <p><span class="font-bold">ID Line:</span> <a href="https://line.me/ti/p/~{{ $contactPersonLineId }}" target="_blank" class="text-white hover:underline">{{ $contactPersonLineId }}</a></p>
+          <p class="text-white text-xs mt-1">Jika tidak ada jadwal yang sesuai, silakan hubungi ID line di atas</p>
         </div>
 
         @foreach (['Tanggal' => 'tanggal_choice', 'Jam' => 'jam_choice'] as $label => $id)
           <div>
-            <label for="{{ $id }}" class="block mb-2 text-sm text-teal-200 font-organetto">{{ $label }}</label>
+            <label for="{{ $id }}" class="block mb-2 text-sm text-white font-organetto">{{ $label }}</label>
             <div class="relative">
-              <select id="{{ $id }}" name="{{ $id }}" class="w-full px-4 py-3 bg-transparent border border-teal-400/50 rounded-full text-sm sm:text-base text-white focus:outline-none focus:border-teal-300 focus:shadow-[0_0_12px_rgba(45,212,191,0.4)]">
-                <option class="bg-cyan-950" disabled selected hidden>Pilih {{ $label }}</option>
+              <select id="{{ $id }}" name="{{ $id }}" class="w-full px-4 py-3 bg-transparent border focus:border-[#6f8c55] focus:shadow-[0_0_12px_#6f8c55] rounded-full text-sm sm:text-base text-white focus:outline-none focus:ring-0">
+                <option class="bg-[#26392d]" disabled selected hidden>Pilih {{ $label }}</option>
               </select>
             </div>
           </div>
         @endforeach
 
-        <button type="submit" id="submitJadwal" class="w-full py-3 border-2 border-teal-400 text-white font-semibold uppercase rounded-full hover:bg-white hover:text-teal-500 transition-all">
+        <button type="submit" id="submitJadwal" class="w-full py-3 border-2 border-[#d3d5d2] text-white font-semibold uppercase rounded-full hover:bg-white hover:text-[#26392d] hover:shadow-[0_0_25px_rgba(211,213,210,0.6)] transition-all">
           Submit Jadwal
         </button>
       </form>
@@ -116,8 +116,8 @@
     });
 
     function loadSchedules() {
-        tanggalSelect.innerHTML = '<option class="bg-cyan-950" selected disabled hidden value="">Pilih Tanggal</option>';
-        jamSelect.innerHTML = '<option class="bg-cyan-950" selected disabled hidden value="">Pilih Jam</option>';
+        tanggalSelect.innerHTML = '<option class="bg-[#6f8c55]" selected disabled hidden value="">Pilih Tanggal</option>';
+        jamSelect.innerHTML = '<option class="bg-[#6f8c55]" selected disabled hidden value="">Pilih Jam</option>';
         jamSelect.disabled = true;
 
         var filteredSchedules = schedules.filter(sch => sch.isOnline == interviewMode);
@@ -125,8 +125,8 @@
         var uniqueDates = new Set();
 
         if (filteredSchedules.length === 0) {
-            tanggalSelect.innerHTML = '<option class="bg-cyan-950" selected disabled hidden value="">Tidak ada jadwal yang tersedia</option>';
-            jamSelect.innerHTML = '<option class="bg-cyan-950" selected disabled hidden value="">Tidak ada jadwal yang tersedia</option>';
+            tanggalSelect.innerHTML = '<option class="bg-[#6f8c55]" selected disabled hidden value="">Tidak ada jadwal yang tersedia</option>';
+            jamSelect.innerHTML = '<option class="bg-[#6f8c55]" selected disabled hidden value="">Tidak ada jadwal yang tersedia</option>';
             jamSelect.disabled = true;
             $('#submitJadwal').prop('disabled', true);
             return;
@@ -146,7 +146,7 @@
                 if (!uniqueDates.has(sch.tanggal)) {
                     uniqueDates.add(sch.tanggal);
                     // CHANGED: Option background color
-                    tanggalSelect.innerHTML += `<option class="bg-cyan-950" value='${sch.tanggal}'>${optionText}</option>`;
+                    tanggalSelect.innerHTML += `<option class="bg-[#6f8c55]" value='${sch.tanggal}'>${optionText}</option>`;
                 }
             }
         });
@@ -206,45 +206,45 @@
             }
 
             detailsHtml += `
-            <div class="bg-cyan-900/30 border-2 border-teal-400/50 rounded-2xl p-8 space-y-4">
+            <div class="bg-[#75a2dd]/50 border-2 border-[#4d7fc1] rounded-2xl p-8 space-y-4">
                 <h3 class="font-organetto text-xl font-bold text-center text-white mb-6 uppercase tracking-wider">Detail Interview ${interviews.interview1.division}</h3>
                 <div class="space-y-4">
                     <div class="grid grid-cols-[40%_60%] gap-2">
-                        <span class="font-organetto font-semibold text-teal-200 min-w-[140px] text-xs md:text-lg">Pewawancara</span>
+                        <span class="font-organetto font-semibold text-[#d19537] min-w-[140px] text-xs md:text-lg">Pewawancara</span>
                         <span class="font-organetto text-white text-xs md:text-lg">: ${interviews.interview1.adminName || "N/A"}</span>
                     </div>
                     <div class="grid grid-cols-[40%_60%] gap-2">
-                        <span class="font-organetto font-semibold text-teal-200 min-w-[140px] text-xs md:text-lg">Mode</span>
+                        <span class="font-organetto font-semibold text-[#d19537] min-w-[140px] text-xs md:text-lg">Mode</span>
                         <span class="font-organetto text-white text-xs md:text-lg">: ${interviews.interview1.mode ? 'Online (Google Meet)' : 'Offline'}</span>
                     </div>
                     ${interviews.interview1.mode ? `
                     <div class="grid grid-cols-[40%_60%] gap-2">
-                        <span class="font-organetto font-semibold text-teal-200 min-w-[140px] text-xs md:text-lg">Link GMeet</span>
-                        <span class="font-organetto text-teal-200 text-xs md:text-lg">: <a href="${interviews.interview1.link_gmeet || '#'}" target="_blank" class="underline break-all text-teal-300 hover:text-teal-100">${interviews.interview1.link_gmeet || "N/A"}</a></span>
+                        <span class="font-organetto font-semibold text-[#d19537] min-w-[140px] text-xs md:text-lg">Link GMeet</span>
+                        <span class="font-organetto text-white text-xs md:text-lg">: <a href="${interviews.interview1.link_gmeet || '#'}" target="_blank" class="underline break-all text-teal-300 hover:text-teal-100">${interviews.interview1.link_gmeet || "N/A"}</a></span>
                     </div>
                     ` : `
                     <div class="grid grid-cols-[40%_60%] gap-2">
-                        <span class="font-organetto font-semibold text-teal-200 min-w-[140px] text-xs md:text-lg">Lokasi</span>
+                        <span class="font-organetto font-semibold text-[#d19537] min-w-[140px] text-xs md:text-lg">Lokasi</span>
                         <span class="font-organetto text-white text-xs md:text-lg">: ${interviews.interview1.location || "N/A"}</span>
                     </div>
                     `}
                     <div class="grid grid-cols-[40%_60%] gap-2">
-                        <span class="font-organetto font-semibold text-teal-200 min-w-[140px] text-xs md:text-lg">Hari, Tanggal</span>
+                        <span class="font-organetto font-semibold text-[#d19537] min-w-[140px] text-xs md:text-lg">Hari, Tanggal</span>
                         <span class="font-organetto text-white text-xs md:text-lg">: ${formattedDate}</span>
                     </div>
                     <div class="grid grid-cols-[40%_60%] gap-2">
-                        <span class="font-organetto font-semibold text-teal-200 min-w-[140px] text-xs md:text-lg">Jam</span>
+                        <span class="font-organetto font-semibold text-[#d19537] min-w-[140px] text-xs md:text-lg">Jam</span>
                         <span class="font-organetto text-white text-xs md:text-lg">: ${formattedTime}</span>
                     </div>
                 </div>
-                <div class="mt-8 pt-6 border-t border-teal-400/30 flex flex-col sm:flex-row justify-center items-center gap-4">
+                <div class="mt-8 pt-6 border-t border-[#75a2dd]/30 flex flex-col sm:flex-row justify-center items-center gap-4">
                     ${interviews.interview1.id_line ? `
-                    <a href="https://line.me/ti/p/~${interviews.interview1.id_line}" target="_blank" class="w-full sm:w-auto flex items-center justify-center gap-2 px-5 py-3 border border-teal-400 text-teal-200 font-semibold uppercase rounded-full hover:bg-teal-500 hover:text-white transition-all duration-300">
+                    <a href="https://line.me/ti/p/~${interviews.interview1.id_line}" target="_blank" class="w-full sm:w-auto flex items-center justify-center gap-2 px-5 py-3 border bg-[#e49924] border-[#d19537] text-white font-semibold uppercase rounded-full hover:bg-white hover:text-[#d19537] transition-all duration-300">
                         <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a8 8 0 100 16 8 8 0 000-16zM5 10a1 1 0 11-2 0 1 1 0 012 0zm5 0a1 1 0 11-2 0 1 1 0 012 0zm5 0a1 1 0 11-2 0 1 1 0 012 0z"></path></svg>
                         <span>Contact Person</span>
                     </a>
                     ` : ''}
-                    <button id="showSopBtn" type="button" class="w-full sm:w-auto flex items-center justify-center gap-2 px-5 py-3 bg-teal-500 text-white font-semibold uppercase rounded-full hover:bg-teal-600 transition-all duration-300">
+                    <button id="showSopBtn" type="button" class="w-full sm:w-auto flex items-center justify-center gap-2 px-5 py-3 bg-[#e49924] border border-[#d19537] text-white font-semibold uppercase rounded-full hover:bg-white hover:text-[#d19537] transition-all duration-300">
                         <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M4 4a2 2 0 012-2h8a2 2 0 012 2v12a1 1 0 110 2h-3a1 1 0 01-1-1v-2a1 1 0 00-1-1H9a1 1 0 00-1 1v2a1 1 0 01-1 1H4a1 1 0 110-2V4zm2 1a1 1 0 011-1h6a1 1 0 011 1v2a1 1 0 01-1 1H7a1 1 0 01-1-1V5z" clip-rule="evenodd"></path></svg>
                         <span>SOP Interview</span>
                     </button>

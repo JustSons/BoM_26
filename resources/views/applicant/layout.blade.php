@@ -61,6 +61,32 @@
             font-style: normal;
         }
 
+        /* raleway-regular - latin */
+        @font-face {
+        font-family: 'Raleway';
+        font-style: normal;
+        font-weight: 400;
+        src: url('{{ asset('fonts/raleway-v37-latin-regular.woff2') }}') format('woff2'); 
+        }
+        /* raleway-700 - latin */
+        @font-face {
+        font-family: 'Raleway';
+        font-style: normal;
+        font-weight: 700;
+        src: url('{{ asset('fonts/raleway-v37-latin-700.woff2') }}') format('woff2'); 
+        }
+        /* raleway-800 - latin */
+        @font-face { 
+        font-family: 'Raleway';
+        font-style: normal;
+        font-weight: 800;
+        src: url('{{ asset('fonts/raleway-v37-latin-800.woff2') }}') format('woff2'); 
+        }
+
+        .font-raleway {
+            font-family: 'Raleway', sans-serif;
+        }
+
         .font-return-grid {
             font-family: 'ReturnoftheGrid', sans-serif;
         }
@@ -94,7 +120,7 @@
 
         body {
             /* background-image: url("{{ asset('assets/welcome-awan.webp') }}"), linear-gradient(180deg, rgba(198, 234, 255, 1) 0%, rgba(56, 182, 255, 1) 14%); */
-            background: linear-gradient(180deg, rgba(198, 234, 255, 1) 0%, rgba(56, 182, 255, 1) 14%);
+            background: linear-gradient(180deg, #8ba376 0%, #6f8c55 14%);
 
             background-color: #C6EAFF;
 

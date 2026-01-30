@@ -80,9 +80,13 @@
      <div class="absolute bottom-0 right-0 w-[25rem] h-[25rem] rounded-full mix-blend-multiply filter blur-3xl opacity-10 bg-[#596c48] animate-pulse"
          style="animation-delay: 2s;"></div>
 
-     <div id="aboutContent" class="relative text-center max-w-4xl mx-auto px-4">
+     <div id="aboutContent" class="relative text-center max-w-4xl mx-auto px-4 z-10">
          <div
-             class="w-full mx-auto p-8 md:p-12 rounded-3xl bg-[#26392d] bg-gradient-to-r from-[#202c24] via-[#26392d] to-[#324539] backdrop-blur-md border border-white/20 shadow-2xl ring-1 ring-white/10">
+             class="w-full mx-auto p-8 md:p-12 rounded-3xl bg-[#26392d] bg-gradient-to-r from-[#202c24] via-[#26392d] to-[#324539] backdrop-blur-md border border-[#8ba376] shadow-2xl ring-1 ring-white/10
+            transition-all duration-500 ease-out 
+            hover:-translate-y-4 
+            hover:shadow-[0_20px_40px_rgba(0,0,0,0.5)] 
+            cursor-default">
              <h1
                  class="font-raleway text-4xl sm:text-5xl lg:text-6xl font-extrabold mb-8 bg-gradient-to-r from-[#6f934e] via-[#6f8c55] to-[#8ba376] bg-clip-text text-transparent leading-tight tracking-wider">
                  BATTLE OF MINDS 2026

@@ -156,7 +156,7 @@
     <div class="relative z-10 flex flex-col w-full justify-center items-center px-4 md:px-8">
         <div class="w-full max-w-7xl" data-aos="zoom-in" data-aos-duration="1000">
             <div
-                class="relative bg-[#26392d] backdrop-blur-xl border-2 border-[#6f8c55] rounded-3xl p-8 md:p-12 lg:p-16 shadow-2xl hover:shadow-[0_0_60px_rgba(255,255,255,0.3)] transition-all duration-500">
+                class="relative bg-[#26392d] backdrop-blur-xl border-2 border-[#6f8c55] rounded-3xl p-8 md:p-12 lg:p-16 shadow-2xl hover:shadow-[0_0_60px_rgba(0,0,0,0.3)] transition-all duration-500">
                 <div class="animate-sonar"></div>
                 <div class="flex flex-col items-center justify-center space-y-4">
                     <div class="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">

@@ -259,7 +259,7 @@
         Divisi
     </h1> --}}
 
-    <h1 class="font-raleway text-4xl sm:text-5xl lg:text-6xl font-extrabold bg-gradient-to-r text-[#26392d] drop-shadow-[0_0_5px_rgba(50,69,57,0.9)] tracking-wider bg-clip-text  mb-12 leading-tight"
+    <h1 class="font-raleway text-4xl sm:text-5xl lg:text-6xl font-extrabold bg-gradient-to-r text-[#26392d] drop-shadow-[0_0_5px_rgba(32,44,36,0.9)] tracking-wider bg-clip-text  mb-12 leading-tight"
         data-aos="fade-down" data-aos-duration="800" data-aos-easing="ease-out-cubic">
         DIVISIONS
     </h1>

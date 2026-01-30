@@ -4,12 +4,12 @@
   <div class="w-full max-w-4xl">
     <div class="mb-6 flex justify-between items-center">
       <a href="{{ route('applicant.berkas') }}">
-        <button class="px-6 py-2 border-2 border-teal-400 text-white font-bold card-glowing-border uppercase tracking-widest rounded-full text-sm sm:text-base transition-all duration-300 hover:bg-white hover:text-teal-600 hover:shadow-lg hover:shadow-teal-400/40">
+        <button class="px-6 py-2 border-2 bg-[#26392d] border-[#d3d5d2] text-white font-bold uppercase tracking-widest rounded-full text-sm sm:text-base transition-all duration-300 hover:bg-white hover:text-[#26392d] hover:shadow-lg hover:shadow-[#26392d]/40">
           ← Back
         </button>
       </a>
       <a href="{{ route('applicant.homepage') }}" id="backToHomepage" class="hidden">
-        <button class="px-6 py-2 border-2 border-teal-400 text-white font-bold card-glowing-border uppercase tracking-widest rounded-full text-sm sm:text-base transition-all duration-300 hover:bg-white hover:text-teal-600 hover:shadow-lg hover:shadow-teal-400/40">
+        <button class="px-6 py-2 border-2 bg-[#26392d] border-[#d3d5d2] text-white font-bold card-glowing-border uppercase tracking-widest rounded-full text-sm sm:text-base transition-all duration-300 hover:bg-white hover:text-[#26392d] hover:shadow-lg hover:shadow-[#26392d]/40">
           Back to Homepage
         </button>
       </a>
@@ -17,23 +17,23 @@
 
     <x-progress-stepper :currentStep="$currentStep" />
 
-    <h1 class="font-return-grid text-white text-2xl sm:text-4xl text-center mb-8 tracking-widest drop-shadow-[0_0_25px_rgba(45,212,191,0.7)]">
+    <h1 class="font-return-grid text-white text-2xl sm:text-4xl text-center mb-8 tracking-widest drop-shadow-[0_0_25px_#26392d]">
       {{ Str::upper($title); }}
     </h1>
 
-    <div class="card-glowing-border rounded-2xl p-6 border border-teal-400/40">
+    <div class="card-glowing-border rounded-2xl p-6 border-2 border-[#d3d5d2]">
       @if (isset($noSchedulesAvailable) && $noSchedulesAvailable)
         <div class="text-center text-white py-8">
             <svg class="w-16 h-16 mx-auto text-yellow-400 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
             <h2 class="font-organetto text-2xl font-bold mb-2">Semua Jadwal Telah Terisi</h2>
-            <p class="text-teal-200 text-base mb-4">
+            <p class="text-[#d19537] font-raleway  font-bold text-base mb-4">
                 Mohon maaf, saat ini semua slot jadwal interview telah penuh.
             </p>
-            <p class="text-teal-200 text-base">
+            <p class="text-[#d19537] font-raleway font-bold text-base">
                 Anda akan segera dihubungi oleh panitia untuk penjadwalan manual.
             </p>
-            <div class="mt-6 bg-cyan-900/50 border border-teal-400/50 rounded-lg p-4">
-                <p class="text-sm text-teal-300">Hubungi Contact Person jika ada pertanyaan:</p>
+            <div class="mt-6 bg-[#6f8c55] border border-[#d3d5d2]/50 rounded-lg p-4">
+                <p class="text-sm text-[#d3d5d2]">Hubungi Contact Person jika ada pertanyaan:</p>
                 <p class="font-bold text-lg text-white mt-1">LINE ID: <span class="tracking-widest">{{ $contactPersonLineId }}</span></p>
             </div>
         </div>

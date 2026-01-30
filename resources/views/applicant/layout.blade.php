@@ -200,7 +200,7 @@
 
         .card-glowing-border {
             position: relative;
-            background-color: rgba(6, 40, 61, 1);
+            background-color: #26392d;
             backdrop-filter: blur(20px);
             border: 2px solid transparent;
             border-radius: 0.5rem;
@@ -214,10 +214,7 @@
             left: -2px;
             right: -2px;
             bottom: -2px;
-            background: linear-gradient(45deg,
-                    rgba(0, 255, 255, 0.3),
-                    rgba(0, 200, 255, 0.3),
-                    rgba(0, 255, 255, 0.3));
+            background: linear-gradient(45deg, #26392d, #324539);
             background-size: 400% 400%;
             z-index: -1;
             animation: gradientBorder 10s ease infinite alternate;

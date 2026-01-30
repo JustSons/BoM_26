@@ -29,6 +29,20 @@
         textarea:focus {
             --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(0px + var(--tw-ring-offset-width)) var(--tw-ring-color);
         }
+        input:-webkit-autofill,
+        input:-webkit-autofill:hover, 
+        input:-webkit-autofill:focus, 
+        input:-webkit-autofill:active {
+            /* Gunakan transition untuk menunda perubahan warna agar tetap terlihat transparan */
+            -webkit-transition: background-color 5000s ease-in-out 0s;
+            transition: background-color 5000s ease-in-out 0s;
+            
+            /* Mengatur warna teks agar tetap putih */
+            -webkit-text-fill-color: white !important;
+            
+            /* Jika ingin memberikan sedikit warna gelap agar teks terbaca jika transition tidak support */
+            caret-color: white;
+        }
     </style>
 @endsection
 @section('content')
@@ -48,7 +62,7 @@
             <div class="mb-6 sm:mb-8 text-left">
                 <a href="{{ route('applicant.homepage') }}">
                     <button
-                        class="px-6 py-2 border-2 border-teal-400 text-white font-bold card-glowing-border uppercase tracking-widest rounded-full text-sm sm:text-base transition-all duration-300 hover:bg-white hover:text-teal-600 hover:shadow-lg hover:shadow-teal-400/40">
+                        class="px-6 py-2 border-2 border-[#d3d5d2] text-white font-bold bg-[#26392d]  uppercase tracking-widest rounded-full text-sm sm:text-base transition-all duration-300 hover:bg-[#ffffff] hover:text-[#26392d] hover:shadow-lg hover:shadow-[#6f8c55]/40">
                         ← Back
                     </button>
                 </a>
@@ -56,12 +70,12 @@
             <x-progress-stepper :currentStep="$currentStep" />
 
             <h1
-                class="font-return-grid text-white text-2xl sm:text-4xl font-bold text-center mb-8 sm:mb-10 tracking-wider drop-shadow-[0_0_25px_rgba(45,212,191,0.7)]">
+                class="font-return-grid text-white text-2xl sm:text-4xl font-bold text-center mb-8 sm:mb-10 tracking-wider drop-shadow-[0_0_25px_#26392d]">
                 {{ Str::upper($title) }}
             </h1>
 
             <div
-                class="card-glowing-border rounded-2xl p-5 sm:p-8 border border-teal-400/40 transition-all duration-500">
+                class="card-glowing-border rounded-2xl p-5 sm:p-8 border border-[#d3d5d2] transition-all duration-500">
                 <form id="form_biodata" method="post" action="{{ route('applicant.biodata.store') }}" class="space-y-6">
                     @csrf
                     <div>
@@ -70,7 +84,7 @@
                             Nama Lengkap
                         </label>
                         <input type="text" id="nama_lengkap" name="nama_lengkap" placeholder="Masukkan nama lengkap"
-                            class="w-full px-4 py-2.5 bg-transparent border border-teal-400/50 rounded-full text-white text-sm sm:text-base placeholder-teal-300/50 transition-all duration-300 focus:outline-none focus:border-teal-300 focus:shadow-[0_0_12px_rgba(45,212,191,0.4)]" />
+                            class="w-full px-4 py-2.5 bg-transparent border border-[#d3d5d2] rounded-full text-white text-sm sm:text-base placeholder-[#6f8c55] transition-all duration-300 focus:outline-none focus:border-[#6f8c55] focus:shadow-[0_0_12px_#6f8c55]" />
                     </div>
 
                     <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
@@ -78,21 +92,21 @@
                             <label for="nrp"
                                 class="font-organetto block mb-2 text-sm sm:text-base font-semibold text-white uppercase tracking-wider">NRP</label>
                             <input type="text" id="nrp" name="nrp" placeholder="NRP"
-                                class="w-full px-4 py-2.5 bg-transparent border border-teal-400/50 rounded-full text-white text-sm sm:text-base placeholder-teal-300/50 transition-all duration-300 focus:outline-none focus:border-teal-300 focus:shadow-[0_0_12px_rgba(45,212,191,0.4)]"
+                                class="w-full px-4 py-2.5 bg-transparent border border-[#d3d5d2] rounded-full text-white text-sm sm:text-base placeholder-[#6f8c55] transition-all duration-300 focus:outline-none focus:border-[#6f8c55] focus:shadow-[0_0_12px_#6f8c55]"
                                 required />
                         </div>
                         <div>
                             <label for="angkatan"
                                 class="font-organetto block mb-2 text-sm sm:text-base font-semibold text-white uppercase tracking-wider">Angkatan</label>
                             <input type="number" id="angkatan" name="angkatan" placeholder="Co: 2024"
-                                class="w-full px-4 py-2.5 bg-transparent border border-teal-400/50 rounded-full text-white text-sm sm:text-base placeholder-teal-300/50 transition-all duration-300 focus:outline-none focus:border-teal-300 focus:shadow-[0_0_12px_rgba(45,212,191,0.4)]"
+                                class="w-full px-4 py-2.5 bg-transparent border border-[#d3d5d2] rounded-full text-white text-sm sm:text-base placeholder-[#6f8c55] transition-all duration-300 focus:outline-none focus:border-[#6f8c55] focus:shadow-[0_0_12px_#6f8c55]"
                                 required />
                         </div>
                         <div>
                             <label for="prodi"
                                 class="font-organetto block mb-2 text-sm sm:text-base font-semibold text-white uppercase tracking-wider">Prodi</label>
                             <input type="text" id="prodi" name="prodi" placeholder="Co: Informatika"
-                                class="w-full px-4 py-2.5 bg-transparent border border-teal-400/50 rounded-full text-white text-sm sm:text-base placeholder-teal-300/50 transition-all duration-300 focus:outline-none focus:border-teal-300 focus:shadow-[0_0_12px_rgba(45,212,191,0.4)]"
+                                class="w-full px-4 py-2.5 bg-transparent border border-[#d3d5d2] rounded-full text-white text-sm sm:text-base placeholder-[#6f8c55] transition-all duration-300 focus:outline-none focus:border-[#6f8c55] focus:shadow-[0_0_12px_#6f8c55]"
                                 required />
                         </div>
                     </div>
@@ -104,17 +118,17 @@
                                 Jenis Kelamin
                             </label>
                             <select id="jenis_kelamin" name="jenis_kelamin"
-                                class="w-full px-4 py-2.5 bg-transparent border border-teal-400/50 rounded-full text-white text-sm sm:text-base appearance-none cursor-pointer transition-all duration-300 focus:outline-none focus:border-teal-300 focus:shadow-[0_0_12px_rgba(45,212,191,0.4)]">
-                                <option class="bg-cyan-950 text-teal-200" disabled selected hidden>Pilih Jenis Kelamin</option>
-                                <option class="bg-cyan-950" value="laki-laki">Laki-laki</option>
-                                <option class="bg-cyan-950" value="perempuan">Perempuan</option>
+                                class="w-full px-4 py-2.5 bg-transparent border border-[#d3d5d2] rounded-full text-white text-sm sm:text-base appearance-none cursor-pointer transition-all duration-300 focus:outline-none focus:border-[#6f8c55] focus:shadow-[0_0_12px_#6f8c55]">
+                                <option class="bg-[#6f8c55] " disabled selected hidden>Pilih Jenis Kelamin</option>
+                                <option class="bg-[#6f8c55]" value="laki-laki">Laki-laki</option>
+                                <option class="bg-[#6f8c55]" value="perempuan">Perempuan</option>
                             </select>
                         </div>
                         <div>
                             <label for="ipk"
                                 class="font-organetto block mb-2 text-sm sm:text-base font-semibold text-white uppercase tracking-wider">IPK <small class="text-muted">(Angkatan 25 bisa diisi 0)</small></label>
                             <input type="number" id="ipk" name="ipk" placeholder="Co: 3.45" step="0.01" min="0" max="4"
-                                class="w-full px-4 py-2.5 bg-transparent border border-teal-400/50 rounded-full text-white text-sm sm:text-base placeholder-teal-300/50 transition-all duration-300 focus:outline-none focus:border-teal-300 focus:shadow-[0_0_12px_rgba(45,212,191,0.4)]"
+                                class="w-full px-4 py-2.5 bg-transparent border border-[#d3d5d2] rounded-full text-white text-sm sm:text-base placeholder-[#6f8c55] transition-all duration-300 focus:outline-none focus:border-[#6f8c55] focus:shadow-[0_0_12px_#6f8c55]"
                                 required />
                         </div>
                     </div>
@@ -123,21 +137,21 @@
                             <label for="line_id"
                                 class="font-organetto block mb-2 text-sm sm:text-base font-semibold text-white uppercase tracking-wider">ID Line</label>
                             <input type="text" id="line_id" name="line_id" placeholder="ID Line"
-                                class="w-full px-4 py-2.5 bg-transparent border border-teal-400/50 rounded-full text-white text-sm sm:text-base placeholder-teal-300/50 transition-all duration-300 focus:outline-none focus:border-teal-300 focus:shadow-[0_0_12px_rgba(45,212,191,0.4)]"
+                                class="w-full px-4 py-2.5 bg-transparent border border-[#d3d5d2] rounded-full text-white text-sm sm:text-base placeholder-[#6f8c55] transition-all duration-300 focus:outline-none focus:border-[#6f8c55] focus:shadow-[0_0_12px_#6f8c55]"
                                 required />
                         </div>
                         <div>
                             <label for="no_hp"
                                 class="font-organetto block mb-2 text-sm sm:text-base font-semibold text-white uppercase tracking-wider">Whatsapp Number</label>
                             <input type="number" id="no_hp" name="no_hp" placeholder="Co: 081234567890"
-                                class="w-full px-4 py-2.5 bg-transparent border border-teal-400/50 rounded-full text-white text-sm sm:text-base placeholder-teal-300/50 transition-all duration-300 focus:outline-none focus:border-teal-300 focus:shadow-[0_0_12px_rgba(45,212,191,0.4)]"
+                                class="w-full px-4 py-2.5 bg-transparent border border-[#d3d5d2] rounded-full text-white text-sm sm:text-base placeholder-[#6f8c55] transition-all duration-300 focus:outline-none focus:border-[#6f8c55] focus:shadow-[0_0_12px_#6f8c55]"
                                 required />
                         </div>
                         <div>
                             <label for="instagram"
                                 class="font-organetto block mb-2 text-sm sm:text-base font-semibold text-white uppercase tracking-wider">Instagram</label>
                             <input type="text" id="instagram" name="instagram" placeholder="Username (tanpa @)"
-                                class="w-full px-4 py-2.5 bg-transparent border border-teal-400/50 rounded-full text-white text-sm sm:text-base placeholder-teal-300/50 transition-all duration-300 focus:outline-none focus:border-teal-300 focus:shadow-[0_0_12px_rgba(45,212,191,0.4)]"
+                                class="w-full px-4 py-2.5 bg-transparent border border-[#d3d5d2] rounded-full text-white text-sm sm:text-base placeholder-[#6f8c55] transition-all duration-300 focus:outline-none focus:border-[#6f8c55] focus:shadow-[0_0_12px_#6f8c55]"
                                 required />
                         </div>
                     </div>
@@ -150,7 +164,7 @@
                             </label>
                             <textarea id="motivasi" name="motivasi" rows="3"
                                 placeholder="Apa yang memotivasi Anda untuk bergabung?"
-                                class="w-full px-4 py-3 bg-transparent border border-teal-400/50 rounded-2xl text-white text-sm sm:text-base placeholder-teal-300/50 resize-none transition-all duration-300 focus:outline-none focus:border-teal-300 focus:shadow-[0_0_12px_rgba(45,212,191,0.4)]"></textarea>
+                                class="w-full px-4 py-3 bg-transparent border border-[#d3d5d2] rounded-2xl text-white text-sm sm:text-base placeholder-[#6f8c55] resize-none transition-all duration-300 focus:outline-none focus:border-[#6f8c55] focus:shadow-[0_0_12px_#6f8c55]"></textarea>
                         </div>
                         <div>
                             <label for="komitmen"
@@ -159,7 +173,7 @@
                             </label>
                             <textarea id="komitmen" name="komitmen" rows="3"
                                 placeholder="Bagaimana komitmen Anda jika diterima?"
-                                class="w-full px-4 py-3 bg-transparent border border-teal-400/50 rounded-2xl text-white text-sm sm:text-base placeholder-teal-300/50 resize-none transition-all duration-300 focus:outline-none focus:border-teal-300 focus:shadow-[0_0_12px_rgba(45,212,191,0.4)]"></textarea>
+                                class="w-full px-4 py-3 bg-transparent border border-[#d3d5d2] rounded-2xl text-white text-sm sm:text-base placeholder-[#6f8c55] resize-none transition-all duration-300 focus:outline-none focus:border-[#6f8c55] focus:shadow-[0_0_12px_#6f8c55]"></textarea>
                         </div>
                         <div>
                             <label for="kelebihan"
@@ -168,7 +182,7 @@
                             </label>
                             <textarea id="kelebihan" name="kelebihan" rows="3"
                                 placeholder="Tuliskan kelebihan Anda"
-                                class="w-full px-4 py-3 bg-transparent border border-teal-400/50 rounded-2xl text-white text-sm sm:text-base placeholder-teal-300/50 resize-none transition-all duration-300 focus:outline-none focus:border-teal-300 focus:shadow-[0_0_12px_rgba(45,212,191,0.4)]"></textarea>
+                                class="w-full px-4 py-3 bg-transparent border border-[#d3d5d2] rounded-2xl text-white text-sm sm:text-base placeholder-[#6f8c55] resize-none transition-all duration-300 focus:outline-none focus:border-[#6f8c55] focus:shadow-[0_0_12px_#6f8c55]"></textarea>
                         </div>
                         <div>
                             <label for="kekurangan"
@@ -177,7 +191,7 @@
                             </label>
                             <textarea id="kekurangan" name="kekurangan" rows="3"
                                 placeholder="Tuliskan kekurangan Anda"
-                                class="w-full px-4 py-3 bg-transparent border border-teal-400/50 rounded-2xl text-white text-sm sm:text-base placeholder-teal-300/50 resize-none transition-all duration-300 focus:outline-none focus:border-teal-300 focus:shadow-[0_0_12px_rgba(45,212,191,0.4)]"></textarea>
+                                class="w-full px-4 py-3 bg-transparent border border-[#d3d5d2] rounded-2xl text-white text-sm sm:text-base placeholder-[#6f8c55] resize-none transition-all duration-300 focus:outline-none focus:border-[#6f8c55] focus:shadow-[0_0_12px_#6f8c55]"></textarea>
                         </div>
                         <div class="sm:col-span-2">
                             <label for="pengalaman"
@@ -185,8 +199,8 @@
                                 Pengalaman Organisasi / Kepanitiaan <small class="text-muted">(Pengalaman saat SMA boleh dicantumkan)</small>
                             </label>
                             <textarea id="pengalaman" name="pengalaman" rows="3"
-                                placeholder="Sebutkan pengalaman Anda dalam organisasi atau kepanitiaan sebelumnya (Co: Ketua OSIS 24/25, Anggota PCE 23/24, Ketua Media Bersama 22/23)"
-                                class="w-full px-4 py-3 bg-transparent border border-teal-400/50 rounded-2xl text-white text-sm sm:text-base placeholder-teal-300/50 resize-none transition-all duration-300 focus:outline-none focus:border-teal-300 focus:shadow-[0_0_12px_rgba(45,212,191,0.4)]"></textarea>
+                                placeholder="Sebutkan pengalaman Anda dalam organisasi atau kepanitiaan sebelumnya (Co: Ketua OSIS 24/25, Anggota BOM 23/24, Ketua PD1P 22/23)"
+                                class="w-full px-4 py-3 bg-transparent border border-[#d3d5d2] rounded-2xl text-white text-sm sm:text-base placeholder-[#6f8c55] resize-none transition-all duration-300 focus:outline-none focus:border-[#6f8c55] focus:shadow-[0_0_12px_#6f8c55]"></textarea>
                         </div>
                     </div>
 
@@ -198,15 +212,15 @@
                                 Divisi 1
                             </label>
                             <select id="division_choice1" name="division_choice1"
-                                class="w-full px-4 py-2.5 bg-transparent border border-teal-400/50 rounded-full text-white text-sm sm:text-base appearance-none cursor-pointer transition-all duration-300 focus:outline-none focus:border-teal-300 focus:shadow-[0_0_12px_rgba(45,212,191,0.4)]">
-                                <option class="bg-cyan-950 text-teal-200" disabled selected hidden>Pilih Divisi Pertama</option>
-                                <option class="bg-cyan-950" value="acara">Acara</option>
-                                <option class="bg-cyan-950" value="pr">Public Relations</option>
-                                <option class="bg-cyan-950" value="creative">Creative</option>
-                                <option class="bg-cyan-950" value="sponsor">Sponsorship</option>
-                                <option class="bg-cyan-950" value="sekkonkes">Sekkonkes</option>
-                                <option class="bg-cyan-950" value="transkapman">Transkapman</option>
-                                <option class="bg-cyan-950" value="it">IT</option>
+                                class="w-full px-4 py-2.5 bg-transparent border border-[#d3d5d2] rounded-full text-white text-sm sm:text-base appearance-none cursor-pointer transition-all duration-300 focus:outline-none focus:border-[#6f8c55] focus:shadow-[0_0_12px_#6f8c55]">
+                                <option class="bg-[#6f8c55]" disabled selected hidden>Pilih Divisi Pertama</option>
+                                <option class="bg-[#6f8c55]" value="acara">Acara</option>
+                                <option class="bg-[#6f8c55]" value="pr">Public Relations</option>
+                                <option class="bg-[#6f8c55]" value="creative">Creative</option>
+                                <option class="bg-[#6f8c55]" value="sponsor">Sponsorship</option>
+                                <option class="bg-[#6f8c55]" value="sekkonkes">Sekkonkes</option>
+                                <option class="bg-[#6f8c55]" value="transkapman">Transkapman</option>
+                                <option class="bg-[#6f8c55]" value="it">IT</option>
                             </select>
                         </div>
                         <div>
@@ -215,25 +229,25 @@
                                 Divisi 2
                             </label>
                             <select id="division_choice2" name="division_choice2"
-                                class="w-full px-4 py-2.5 bg-transparent border border-teal-400/50 rounded-full text-white text-sm sm:text-base appearance-none cursor-pointer transition-all duration-300 focus:outline-none focus:border-teal-300 focus:shadow-[0_0_12px_rgba(45,212,191,0.4)]">
-                                <option class="bg-cyan-950 text-teal-200" disabled selected hidden>Pilih Divisi Kedua</option>
-                                <option class="bg-cyan-950" value="acara">Acara</option>
-                                <option class="bg-cyan-950" value="pr">Public Relations</option>
-                                <option class="bg-cyan-950" value="creative">Creative</option>
-                                <option class="bg-cyan-950" value="sponsor">Sponsorship</option>
-                                <option class="bg-cyan-950" value="sekkonkes">Sekkonkes</option>
-                                <option class="bg-cyan-950" value="transkapman">Transkapman</option>
-                                <option class="bg-cyan-950" value="it">IT</option>
+                                class="w-full px-4 py-2.5 bg-transparent border border-[#d3d5d2] rounded-full text-white text-sm sm:text-base appearance-none cursor-pointer transition-all duration-300 focus:outline-none focus:border-[#6f8c55] focus:shadow-[0_0_12px_#6f8c55]">
+                                <option class="bg-[#6f8c55] text-teal-200" disabled selected hidden>Pilih Divisi Kedua</option>
+                                <option class="bg-[#6f8c55]" value="acara">Acara</option>
+                                <option class="bg-[#6f8c55]" value="pr">Public Relations</option>
+                                <option class="bg-[#6f8c55]" value="creative">Creative</option>
+                                <option class="bg-[#6f8c55]" value="sponsor">Sponsorship</option>
+                                <option class="bg-[#6f8c55]" value="sekkonkes">Sekkonkes</option>
+                                <option class="bg-[#6f8c55]" value="transkapman">Transkapman</option>
+                                <option class="bg-[#6f8c55]" value="it">IT</option>
                             </select>
                         </div>
                     </div>
 
                     <div class="pt-4">
                         <button type="submit" id="submitBiodata"
-                            class="w-full px-6 py-3 border-2 border-teal-400 text-white text-base sm:text-lg font-bold uppercase tracking-widest rounded-full transition-all duration-300 hover:bg-white hover:text-teal-500">
+                            class="w-full px-6 py-3 border-2 border-white text-white text-base sm:text-lg font-bold uppercase tracking-widest rounded-full transition-all duration-300 hover:bg-white hover:text-[#26392d]">
                             Submit
                         </button>
-                        <button type="button" id="nextPage" class="w-full px-6 py-3 border-2 border-teal-400 text-white text-base sm:text-lg font-bold uppercase tracking-widest rounded-full transition-all duration-300 hover:bg-white hover:text-teal-500 hidden">Next Page</button>
+                        <button type="button" id="nextPage" class="w-full px-6 py-3 border-2 border-white text-white text-base sm:text-lg font-bold uppercase tracking-widest rounded-full transition-all duration-300 hover:bg-white hover:text-[#26392d] hidden">Next Page</button>
                     </div>
                 </form>
             </div>

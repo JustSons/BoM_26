@@ -120,6 +120,26 @@
             height: 250px;
         }
     }
+
+    @keyframes sonar-pulse {
+    0% {
+        transform: scale(1);
+        opacity: 0.5;
+    }
+    100% {
+        transform: scale(1.1);
+        opacity: 0;
+    }
+}
+
+.animate-sonar {
+    position: absolute;
+    inset: 0;
+    z-index: -1; 
+    border: 2px solid #d3d5d2; 
+    border-radius: 1.5rem; 
+    animation: sonar-pulse 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+}
 </style>
 
 <section id="contact" class="relative flex w-screen min-h-screen py-20 overflow-hidden">
@@ -137,6 +157,7 @@
         <div class="w-full max-w-7xl" data-aos="zoom-in" data-aos-duration="1000">
             <div
                 class="relative bg-[#26392d] backdrop-blur-xl border-2 border-[#6f8c55] rounded-3xl p-8 md:p-12 lg:p-16 shadow-2xl hover:shadow-[0_0_60px_rgba(255,255,255,0.3)] transition-all duration-500">
+                <div class="animate-sonar"></div>
                 <div class="flex flex-col items-center justify-center space-y-4">
                     <div class="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
                         {{-- Kiri --}}

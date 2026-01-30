@@ -62,7 +62,7 @@
             <div class="mb-6 sm:mb-8 text-left">
                 <a href="{{ route('applicant.homepage') }}">
                     <button
-                        class="px-6 py-2 border-2 border-[#d3d5d2] text-white font-bold bg-[#26392d]  uppercase tracking-widest rounded-full text-sm sm:text-base transition-all duration-300 hover:bg-[#ffffff] hover:text-[#26392d] hover:shadow-lg hover:shadow-[#6f8c55]/40">
+                        class="px-6 py-2 border-2 border-[#d3d5d2] text-white font-bold bg-[#26392d]  uppercase tracking-widest rounded-full text-sm sm:text-base transition-all duration-300 hover:bg-[#ffffff] hover:text-[#26392d] hover:shadow-lg hover:shadow-[#26392d]/40">
                         ← Back
                     </button>
                 </a>

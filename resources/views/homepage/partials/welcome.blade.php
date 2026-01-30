@@ -113,21 +113,22 @@
     <!-- Hero Content -->
     <div class="hero-content">
         <h2 class="font-raleway text-2xl md:text-5xl font-bold text-white  drop-shadow-[0_0_15px_rgba(211,213,215,0.9)]"
-            style="">
+            style="" data-aos="fade-down" data-aos-duration="800">
             OPEN RECRUITMENT
         </h2>
         <h1
-            class="font-raleway text-6xl md:text-7xl font-extrabol mt-1 sm:mt-3 md:mt-3 lg:mt-6 text-white drop-shadow-[0_0_15px_rgba(211,213,215,0.9)] tracking-wider">
+            class="font-raleway text-6xl md:text-7xl font-extrabol mt-1 sm:mt-3 md:mt-3 lg:mt-6 text-white drop-shadow-[0_0_15px_rgba(211,213,215,0.9)] tracking-wider"
+            data-aos="fade-down" data-aos-duration="800" data-aos-delay="200">
             BATTLE OF MINDS
         </h1>
         <h2 class="font-raleway text-3xl md:text-5xl font-extrabold -mt-5 md:-mt-10 text-white  drop-shadow-[0_0_15px_rgba(211,213,215,0.9)]"
-            style="">2026</h2>
+            style="" data-aos="fade-down" data-aos-duration="800" data-aos-delay="400">2026</h2>
         <p class="font-raleway mt-4 text-2xl
             md:text-4xl font-bold text-white mb-4 italic"
-            style="text-shadow: 0 0 15px rgba(255,255,255,0.8);">
+            style="text-shadow: 0 0 15px rgba(255,255,255,0.8);" data-aos="fade-up" data-aos-duration="800" data-aos-delay="600">
             Expedition Search Of Oracle Artifact
         </p>
-        <a href="{{ route('applicant.registerNow') }}" class="new-gradient-button mt-2">
+        <a href="{{ route('applicant.registerNow') }}" class="new-gradient-button mt-2" data-aos="fade-up" data-aos-duration="800" data-aos-delay="600">
             Register Here
         </a>
     </div>

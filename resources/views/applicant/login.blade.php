@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>PCE 2026 | Login</title>
+    <title>BoM 2026 | Login</title>
     <link rel="icon" href="{{ asset('assets/logoAja.png') }}">
 
     {{-- TW Elements --}}
@@ -35,7 +35,7 @@
 
         body {
             /* background-image: url("{{ asset('assets/welcome-awan.webp') }}"), linear-gradient(180deg, rgba(198, 234, 255, 1) 0%, rgba(56, 182, 255, 1) 14%); */
-            background: linear-gradient(180deg, rgba(198, 234, 255, 1) 0%, rgba(56, 182, 255, 1) 14%);
+            background: linear-gradient(180deg, #8ba376 0%, #6f8c55 14%);
 
             background-color: #C6EAFF;
 
@@ -228,11 +228,9 @@
             right: -2px;
             bottom: -2px;
             background: linear-gradient(45deg,
-                    rgba(0, 255, 255, 0.5),
+                    #324539,
                     /* Cyan */
-                    rgba(0, 200, 255, 0.5),
-                    /* Light Blue */
-                    rgba(0, 255, 255, 0.5));
+                    #26392d);
             /* Cyan kembali */
             background-size: 400% 400%;
             z-index: -1;
@@ -311,7 +309,7 @@
 
             <a href="{{ route('applicant.auth') }}"
                 class="w-full font-organetto text-white button-interact 
-                       border-2 border-cyan-400 active:scale-[0.97] font-semibold drop-shadow-2xl 
+                       border-2 border-[#6f8c55] active:scale-[0.97] font-semibold drop-shadow-2xl 
                        text-lg md:text-3xl rounded-full py-1 md:py-3 text-center">
                 Sign In with PCU Email
             </a>

@@ -154,7 +154,6 @@
                 scrollTrigger: {
                     trigger: aboutContent,
                     start: "top 80%",
-                    markers: true,
                     toggleActions: "play none none reverse" 
                 }
             }

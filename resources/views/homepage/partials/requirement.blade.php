@@ -19,7 +19,7 @@
 <section id="requirement"
     class="relative w-screen min-h-screen flex items-center justify-center overflow-hidden bg-transparent py-20">
     <div class="relative z-10 flex flex-col items-center justify-center w-11/12 sm:w-10/12 max-w-4xl text-center px-4">
-        <h1 class="font-raleway font-extraboldtext-4xl sm:text-5xl lg:text-6xl font-bold bg-gradient-to-r text-[#26392d] drop-shadow-[0_0_5px_rgba(32,44,36,0.9)] tracking-wider bg-clip-text  mb-12 leading-tight"
+        <h1 class="font-raleway font-extrabold text-4xl sm:text-5xl lg:text-6xl bg-gradient-to-r text-[#26392d] drop-shadow-[0_0_5px_rgba(32,44,36,0.9)] tracking-wider bg-clip-text  mb-12 leading-tight"
             data-aos="fade-down" data-aos-duration="800" data-aos-easing="ease-out-cubic">
             REQUIREMENTS
         </h1>

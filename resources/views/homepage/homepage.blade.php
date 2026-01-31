@@ -65,6 +65,7 @@
 @endsection
 @section('content')
     @include('components.navbar')
+    @include('components.floating-logos')
     <div class="background flex flex-col overflow-x-hidden">
         @include('homepage.partials.welcome')
         @include('homepage.partials.penjelasan')

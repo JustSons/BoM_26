@@ -73,6 +73,14 @@ class ApplicantController extends Controller
 
     public function storeBiodata(Request $request)
     {
+        //Ini untuk tutup pendaftarannya
+        // $deadline = Carbon::create(2026, 2, 15, 23, 59, 59, "Asia/Jakarta");
+        // if (Carbon::now("Asia/Jakarta")->isAfter($deadline)) {
+        //     return response()->json([
+        //         'success' => false, 
+        //         'message' => 'Maaf, pendaftaran Battle Of Mind 2025 sudah ditutup.'
+        //     ]);
+        // }
         $request->merge(array_map('trim', $request->all()));
 
         $valid = Validator::make($request->all(), [

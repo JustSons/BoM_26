@@ -17,7 +17,7 @@
 
     <x-progress-stepper :currentStep="$currentStep" />
 
-    <h1 class="font-return-grid text-white text-2xl sm:text-4xl text-center mb-8 tracking-widest drop-shadow-[0_0_25px_#26392d]">
+    <h1 class="font-return-grid text-[#26392d] text-2xl sm:text-4xl text-center mb-8 tracking-widest drop-shadow-[0_0_25px_#26392d]">
       {{ Str::upper($title); }}
     </h1>
 

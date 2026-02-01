@@ -293,6 +293,7 @@
         </script>
     @endif
     <section class="min-h-screen w-full flex justify-center items-center p-4">
+        <img src={{ asset('assets/bgMain.webp') }} class="h-full w-full fixed object-cover" alt="bgMain">
 
         {{-- [UPDATE] Ganti class di sini untuk glowing border --}}
         <div

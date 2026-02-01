@@ -120,7 +120,7 @@
 
         body {
             /* background-image: url("{{ asset('assets/welcome-awan.webp') }}"), linear-gradient(180deg, rgba(198, 234, 255, 1) 0%, rgba(56, 182, 255, 1) 14%); */
-            background: linear-gradient(180deg, #8ba376 0%, #6f8c55 14%);
+            /* background: linear-gradient(180deg, #8ba376 0%, #6f8c55 14%);
 
             background-color: #C6EAFF;
 
@@ -131,7 +131,7 @@
 
             background-position: 0% 10%, center top;
 
-            animation: bg-slide 30s ease-in-out infinite;
+            animation: bg-slide 30s ease-in-out infinite; */
         }
 
         /* @keyframes bg-slide {
@@ -289,6 +289,7 @@
             });
         </script>
     @endif
+        <img src={{ asset('assets/bgMain.webp') }} class="h-full w-full fixed object-cover z-[-1]" alt="bgMain">
 
     @yield('content')
 

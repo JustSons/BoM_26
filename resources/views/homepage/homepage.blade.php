@@ -67,6 +67,7 @@
     @include('components.navbar')
     @include('components.floating-logos')
     <div class="background flex flex-col overflow-x-hidden">
+        <img src={{ asset('assets/bgMain.webp') }} class="h-full w-full fixed object-cover" alt="bgMain">
         @include('homepage.partials.welcome')
         @include('homepage.partials.penjelasan')
         @include('homepage.partials.divisi')
@@ -78,7 +79,7 @@
     </div>
 @endsection
 @section('script')
-    <script>
+    {{-- <script>
         document.addEventListener('DOMContentLoaded', function() {
             const swiper = new Swiper('.swiper', {
                 effect: 'coverflow',
@@ -149,5 +150,5 @@
                 }
             });
         });
-    </script>
+    </script> --}}
 @endsection

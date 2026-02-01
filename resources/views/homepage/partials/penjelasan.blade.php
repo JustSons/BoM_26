@@ -93,7 +93,7 @@
              </h1>
 
              <div id="aboutText"
-                 class="font-raleway text-justify font-bold space-y-6 text-[#d19537] text-sm md:text-lg leading-relaxed mb-8">
+                 class="font-raleway text-justify font-bold space-y-6 text-[#CC7434] text-sm md:text-lg leading-relaxed mb-8">
                  <p>
                     Sejalan dengan visi Indonesia Emas 2045, penting bagi generasi muda untuk memahami dan tertarik pada bidang STEM. 
                      Karena itu, Battle of Minds hadir sebagai lomba matematika dan logika yang dirancang sesuai dengan karakter siswa/i SMA. 

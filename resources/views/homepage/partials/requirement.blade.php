@@ -31,33 +31,33 @@
                 class="absolute inset-0 rounded-3xl bg-gradient-to-br from-blue-500/5 via-transparent to-indigo-500/5 pointer-events-none">
             </div> --}}
 
-            <ul class="space-y-4 font-raleway text-[#d19537] font-bold text-lg md:text-lg text-left relative z-10">
-                <li class="flex items-start gap-3 p-3 rounded-lg hover:bg-[#546940] transition-colors duration-300"
+            <ul class="space-y-4 font-raleway text-[#CC7434] font-bold text-lg md:text-lg text-left relative z-10">
+                <li class="flex items-start gap-3 p-3 rounded-lg hover:bg-[#3B4C42] transition-colors duration-300"
                     data-aos="fade-up" data-aos-duration="600" data-aos-delay="500">
                     <span class="font-bold flex-shrink-0">•</span>
                     <span>PCU Students Batch '24 and '25 </span>
                 </li>
-                <li class="flex items-start gap-3 p-3 rounded-lg hover:bg-[#546940] transition-colors duration-300"
+                <li class="flex items-start gap-3 p-3 rounded-lg hover:bg-[#3B4C42] transition-colors duration-300"
                     data-aos="fade-up" data-aos-duration="600" data-aos-delay="600">
                     <span class="font-bold flex-shrink-0">•</span>
                     <span>Passed WGG & BSLT</span>
                 </li>
-                <li class="flex items-start gap-3 p-3 rounded-lg hover:bg-[#546940] transition-colors duration-300"
+                <li class="flex items-start gap-3 p-3 rounded-lg hover:bg-[#3B4C42] transition-colors duration-300"
                     data-aos="fade-up" data-aos-duration="600" data-aos-delay="600">
                     <span class="font-bold flex-shrink-0">•</span>
                     <span>GPA ≥ 2.75</span>
                 </li>
-                <li class="flex items-start gap-3 p-3 rounded-lg hover:bg-[#546940] transition-colors duration-300"
+                <li class="flex items-start gap-3 p-3 rounded-lg hover:bg-[#3B4C42] transition-colors duration-300"
                     data-aos="fade-up" data-aos-duration="600" data-aos-delay="700">
                     <span class="font-bold flex-shrink-0">•</span>
                     <span>Screenshot of Transcript & SKKK</span>
                 </li>
-                <li class="flex items-start gap-3 p-3 rounded-lg hover:bg-[#546940] transition-colors duration-300"
+                <li class="flex items-start gap-3 p-3 rounded-lg hover:bg-[#3B4C42] transition-colors duration-300"
                     data-aos="fade-up" data-aos-duration="600" data-aos-delay="800">
                     <span class="font-bold flex-shrink-0">•</span>
                     <span>Student ID Card <span class="text-[#d3d5d2] font-bold">(KTM)</span></span>
                 </li>
-                <li class="flex items-start gap-3 p-3 rounded-lg hover:bg-[#546940] transition-colors duration-300"
+                <li class="flex items-start gap-3 p-3 rounded-lg hover:bg-[#3B4C42] transition-colors duration-300"
                     data-aos="fade-up" data-aos-duration="600" data-aos-delay="1000">
                     <span class="font-bold flex-shrink-0">•</span>
                     <span>Portfolio <span class="text-[#d3d5d2] font-bold">(Creative Division only)</span></span>

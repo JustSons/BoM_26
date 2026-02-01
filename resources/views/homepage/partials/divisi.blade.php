@@ -1,398 +1,481 @@
 <style>
-    #divisi {
-        display: flex;
-        flex-direction: column;
-        min-height: 100vh;
-        width: 100%;
-        color: #333;
-        align-items: center;
-        justify-content: center;
-        padding: 20px;
-    }
-
-    h1 {
-        color: white;
-        text-align: center;
-        font-size: 3rem;
-        font-weight: bold;
-        margin-bottom: 50px;
-        text-shadow: 6px 4px 15px rgba(255, 255, 255, 0.3);
-    }
-
-    .swiper {
-        width: 75%;
-        max-width: 1200px;
-        padding: 50px 0;
-        /* overflow: hidden; */
-        overflow: visible;
-    }
-
-    .swiper-wrapper {
-        align-items: center;
-    }
-
-    .swiper-slide {
-        width: 280px;
-        aspect-ratio: 3/4;
+    .divisi-card {
         perspective: 1000px;
-        transition: opacity 0.3s ease;
+        cursor: pointer;
+        /* Mobile: 11rem wide, 20rem tall */
+        width: 12rem;
+        height: 18rem;
+        flex-shrink: 0;
     }
 
-    .swiper-slide-active {
-        opacity: 1;
-    }
+    /* iphone SE */
+    @media (max-width: 420px) {
+        .divisi-card {
+            width: 10rem;
+            height: 15rem;
+        }
 
-    .swiper-slide-next,
-    .swiper-slide-prev {
-        opacity: 0.8;
-    }
+        .card-back-desc {
+            font-size: 0.65rem !important;
+            font-weight: normal;
+        }
 
-    .swiper-slide {
-        opacity: 0.5;
-    }
-
-    @media (max-width: 768px) {
-        .swiper-slide {
-            width: 200px;
+        .card-icon {
+            width: 7rem;
+            height: 7rem;
         }
     }
 
-    .card-container {
+    /* Tablet 640px+ */
+    @media (min-width: 640px) {
+        .divisi-card {
+            width: 13rem;
+            height: 21.25rem;
+        }
+    }
+
+    /* Desktop 1024px+ */
+    @media (min-width: 1024px) {
+        .divisi-card {
+            width: 15rem;
+            height: 23.75rem;
+        }
+    }
+
+    .divisi-card__inner {
         position: relative;
         width: 100%;
         height: 100%;
-        transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        transition: transform 0.6s cubic-bezier(.4, 0, .2, 1);
         transform-style: preserve-3d;
-        cursor: pointer;
     }
 
-    .card-container.flipped {
+    .divisi-card.flipped .divisi-card__inner {
         transform: rotateY(180deg);
     }
 
-    .card-face {
+    .divisi-card__front,
+    .divisi-card__back {
         position: absolute;
-        width: 100%;
-        height: 100%;
+        inset: 0;
         backface-visibility: hidden;
-        border-radius: 14px;
-        overflow: hidden;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        -webkit-backface-visibility: hidden;
+        background: #26392d !important;
+        border: 2px solid #CC7434;
+        border-radius: 1rem;
     }
 
-    .card-front {
-        background: linear-gradient(135deg, #202c24 0%, #324539 60%);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border: 2px solid #d3d5d2;
-    }
-
-    .card-front img {
-        width: 80%;
-        height: 80%;
-        object-fit: contain;
-    }
-
-    .card-back {
-        background: linear-gradient(135deg, #202c24 0%, #324539 100%);
+    .divisi-card__back {
         transform: rotateY(180deg);
+    }
+
+    /* ── Swiper slide: width matches card exactly, no stretch ── */
+    #divisi-swiper .swiper-slide {
+        width: 11rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: transform 0.4s ease, opacity 0.4s ease;
+        opacity: 0.45;
+        transform: scale(0.78);
+    }
+
+    @media (min-width: 640px) {
+        #divisi-swiper .swiper-slide {
+            width: 13rem;
+        }
+    }
+
+    @media (min-width: 1024px) {
+        #divisi-swiper .swiper-slide {
+            width: 15rem;
+        }
+    }
+
+    #divisi-swiper .swiper-slide-active {
+        opacity: 1 !important;
+        transform: scale(1) !important;
+    }
+
+    #divisi-swiper .swiper-slide-prev,
+    #divisi-swiper .swiper-slide-next {
+        opacity: 0.72 !important;
+        transform: scale(0.88) !important;
+    }
+
+    /* ── Front face ── */
+    .divisi-card__front {
         display: flex;
         flex-direction: column;
-        padding: 30px 20px;
-        color: white;
-        border: 2px solid #d3d5d2;
-    }
-
-    .card-back h3 {
-        font-size: 1.5rem;
-        color: #d19537;
-        font-family: raleway;
-        font-weight: 800;
-        margin-bottom: 20px;
-        text-transform: uppercase;
-        text-align: center;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    }
-
-    .card-back p {
-        font-size: 0.95rem;
-        line-height: 1.6;
-        font-family: raleway;
-        font-weight: 400;
-        text-align: center;
-        color: #d3d5d2;
-        flex: 1;
-        display: flex;
         align-items: center;
+        justify-content: center;
     }
 
-    .title {
-        position: absolute;
-        bottom: -60px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: max-content;
-        margin-top: 0;
+    .card-icon {
+        width: 9rem;
+        height: 9rem;
+        object-fit: contain;
+        margin-bottom: 0.875rem;
+        filter: drop-shadow(0 2px 4px rgba(0, 0, 0, .4));
+        transition: transform 0.3s cubic-bezier(.4, 0, .2, 1);
+    }
+
+    .divisi-card:not(.flipped):hover .card-icon {
+        transform: scale(1.5);
+    }
+
+    @media (min-width: 640px) {
+        .card-icon {
+            width: 7rem;
+            height: 7rem;
+            margin-bottom: 1rem;
+        }
+    }
+
+    @media (min-width: 1024px) {
+        .card-icon {
+            width: 10rem;
+            height: 10rem;
+            margin-bottom: 1.125rem;
+        }
+    }
+
+    .card-title {
+        font-size: 0.9375rem;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: #fff;
+        font-family: 'Raleway', sans-serif;
+        font-weight: 600;
         text-align: center;
-        padding: 10px 20px;
-        background: #26392d;
-        border-radius: 8px;
-        border: 2px solid #202c24;
-        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
-        backdrop-filter: blur(10px);
-        transition: all 0.3s ease;
-        z-index: 10;
+        line-height: 1.3;
     }
 
-    .swiper-slide-active .title {
-        bottom: -60px !important;
+    @media (min-width: 640px) {
+        .card-title {
+            font-size: 1.0625rem;
+        }
     }
 
-    .title span {
-        color: #d3d5d2;
-        font-size: 1rem;
-        font-family: raleway;
+    @media (min-width: 1024px) {
+        .card-title {
+            font-size: 1.125rem;
+        }
+    }
+
+    .card-hint {
+        font-size: 0.9rem;
         font-weight: 700;
+        margin-top: 0.375rem;
+        color: #CC7434;
+        font-family: 'Raleway', sans-serif;
     }
 
-    .swiper-slide-active .title {
-        bottom: -20px;
-        box-shadow: 0 20px 30px 2px rgba(0, 0, 0, 0.2);
-    }
-
-    .flip-hint {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        background: #d19537;
-        color: #324539;
-        padding: 5px 10px;
-        border-radius: 20px;
-        font-size: 0.7rem;
-        font-family: raleway;
-        font-weight: 700;
-        z-index: 5;
-    }
-
-    @media (max-width: 1024px) {
-        .swiper-slide {
-            width: 220px;
-        }
-
-        .card-back h3 {
-            font-size: 1.2rem;
-        }
-
-        .card-back p {
-            font-size: 0.8rem;
-        }
-
-        h1 {
-            font-size: 2.5rem;
-        }
-    }
-
-    @media (max-width: 768px) {
-        .swiper {
-            width: 95%;
-        }
-
-        .swiper-slide {
-            width: 180px;
-        }
-
-        .card-back {
-            padding: 20px 15px;
-        }
-
-        .card-back h3 {
-            font-size: 1rem;
-            margin-bottom: 12px;
-        }
-
-        .card-back p {
-            font-size: 0.7rem;
-        }
-
-        h1 {
-            font-size: 2rem;
-            margin-bottom: 30px;
-        }
-
-        .title span {
-            font-size: 0.85rem;
-        }
-    }
-
-    @media (max-width: 480px) {
-        .swiper-slide {
-            width: 160px;
-        }
-
-        h1 {
-            font-size: 1.5rem;
-        }
-
-        .card-back h3 {
-            font-size: 0.9rem;
-        }
-
-        .card-back p {
-            font-size: 0.65rem;
-        }
-
-        .title span {
+    @media (min-width: 640px) {
+        .card-hint {
             font-size: 0.75rem;
+            margin-top: 0.5rem;
         }
+    }
 
-        .flip-hint {
-            font-size: 0.6rem;
-            padding: 4px 8px;
+    @media (min-width: 1024px) {
+        .card-hint {
+            font-size: 0.8125rem;
+            margin-top: 0.625rem;
+        }
+    }
+
+    /* ── Back face ── */
+    .divisi-card__back {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 1.25rem;
+    }
+
+    @media (min-width: 640px) {
+        .divisi-card__back {
+            padding: 1.5rem;
+        }
+    }
+
+    @media (min-width: 1024px) {
+        .divisi-card__back {
+            padding: 1.75rem;
+        }
+    }
+
+    .card-back-title {
+        font-size: 1rem;
+        margin-bottom: 0.625rem;
+        color: #fff;
+        font-family: 'Raleway', sans-serif;
+        font-weight: 700;
+        text-align: center;
+    }
+
+    @media (min-width: 640px) {
+        .card-back-title {
+            font-size: 1.0625rem;
+            margin-bottom: 0.75rem;
+        }
+    }
+
+    @media (min-width: 1024px) {
+        .card-back-title {
+            font-size: 1.125rem;
+            margin-bottom: 0.875rem;
+        }
+    }
+
+    .card-back-desc {
+        font-size: 0.8rem;
+        line-height: 1.6;
+        font-weight: 700;
+        color: #CC7434;
+        font-family: 'Raleway', sans-serif;
+        text-align: center;
+    }
+
+    @media (min-width: 640px) {
+        .card-back-desc {
+            font-size: 0.8125rem;
+        }
+    }
+
+    @media (min-width: 1024px) {
+        .card-back-desc {
+            font-size: 0.875rem;
         }
     }
 </style>
 
-<section id="divisi">
-    {{-- <h1 class="font-return-grid text-4xl sm:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-green-600 via-green-500 to-green-500 bg-clip-text text-transparent mb-12 leading-tight"
-        data-aos="fade-down" data-aos-duration="800" data-aos-easing="ease-out-cubic">
-        Divisi
-    </h1> --}}
+<section class="relative w-full py-16 sm:py-24 overflow-hidden">
 
-    <h1 class="font-raleway text-4xl sm:text-5xl lg:text-6xl font-extrabold bg-gradient-to-r text-[#26392d] drop-shadow-[0_0_5px_rgba(32,44,36,0.9)] tracking-wider bg-clip-text  mb-12 leading-tight"
-        data-aos="fade-down" data-aos-duration="800" data-aos-easing="ease-out-cubic">
-        DIVISIONS
-    </h1>
+    <!-- Section Title -->
+    <div class="text-center mb-10 px-4" data-aos="fade-up">
+        <h2
+            class="font-raleway font-extrabold text-[#26392d] drop-shadow-[0_0_15px_rgba(38,57,45,0.6)] text-3xl sm:text-4xl lg:text-6xl tracking-tight">
+            DIVISIONS
+        </h2>
+    </div>
 
-    <div class="swiper">
+    <!-- Swiper Carousel -->
+    <div id="divisi-swiper" class="swiper w-full px-8 sm:px-12 py-6">
         <div class="swiper-wrapper">
-            <!-- Sponsor -->
+
+            <!-- ── 1. Sponsor ── -->
             <div class="swiper-slide">
-                <div class="card-container">
-                    <div class="card-face card-front">
-                        <img src="{{ asset('assets/logo sponsor.webp') }}" alt="Sponsor">
-                        <div class="flip-hint">Click to flip</div>
-                    </div>
-                    <div class="card-face card-back">
-                        <h3>Sponsor</h3>
-                        <p>Divisi yang mencari, menjalin, dan mengelola kerja sama 
-                            dengan sponsor serta memastikan pemenuhan hak dan kewajiban sponsor sesuai kesepakatan.</p>
+                <div class="divisi-card">
+                    <div class="divisi-card__inner">
+                        <div class="divisi-card__front shadow-lg shadow-indigo-900/40">
+                            <img src="{{ asset('assets/logo sponsor.webp') }}" alt="Sponsor" class="card-icon">
+                            <span class="card-title">Sponsor</span>
+                            <span class="card-hint">Tap to flip</span>
+                        </div>
+                        <div class="divisi-card__back shadow-lg shadow-indigo-900/40">
+                            <h3 class="card-back-title">Sponsor</h3>
+                            <p class="card-back-desc">
+                                Divisi yang mencari, menjalin, dan mengelola kerja sama dengan sponsor serta memastikan
+                                pemenuhan hak dan kewajiban sponsor sesuai kesepakatan.
+                            </p>
+                        </div>
                     </div>
                 </div>
-                <div class="title"><span>Sponsor</span></div>
             </div>
 
-            <!-- Materi -->
+            <!-- ── 2. Materi ── -->
             <div class="swiper-slide">
-                <div class="card-container">
-                    <div class="card-face card-front">
-                        <img src="{{ asset('assets/logo materi.webp') }}" alt="Materi">
-                        <div class="flip-hint">Click to flip</div>
-                    </div>
-                    <div class="card-face card-back">
-                        <h3>Materi</h3>
-                        <p>Divisi yang bertugas merancang dan menyusun soal-soal yang inovatif, 
-                            berbasis STEM, yang disesuaikan dengan karakteristik siswa/i SMA.</p>
+                <div class="divisi-card">
+                    <div class="divisi-card__inner">
+                        <div class="divisi-card__front shadow-lg shadow-emerald-900/40">
+                            <img src="{{ asset('assets/logo materi.webp') }}" alt="Materi" class="card-icon">
+                            <span class="card-title">Materi</span>
+                            <span class="card-hint">Tap to flip</span>
+                        </div>
+                        <div class="divisi-card__back shadow-lg shadow-emerald-900/40">
+                            <h3 class="card-back-title">Materi</h3>
+                            <p class="card-back-desc">
+                                Divisi yang bertugas merancang dan menyusun soal-soal yang inovatif, berbasis STEM, yang
+                                disesuaikan dengan karakteristik siswa/i SMA.
+                            </p>
+                        </div>
                     </div>
                 </div>
-                <div class="title"><span>Materi</span></div>
             </div>
 
-            <!-- Transkapman -->
+            <!-- ── 3. Transkapman ── -->
             <div class="swiper-slide">
-                <div class="card-container">
-                    <div class="card-face card-front">
-                        <img src="{{ asset('assets/logo transkapman.webp') }}" alt="Transkapman">
-                        <div class="flip-hint">Click to flip</div>
-                    </div>
-                    <div class="card-face card-back">
-                        <h3>Transkapman</h3>
-                        <p>Divisi yang bertanggung jawab atas pengadaan dan pengelolaan perlengkapan, pengaturan transportasi, 
-                            serta menjaga keamanan dan ketertiban selama acara berlangsung.</p>
+                <div class="divisi-card">
+                    <div class="divisi-card__inner">
+                        <div class="divisi-card__front shadow-lg shadow-amber-900/40">
+                            <img src="{{ asset('assets/logo transkapman.webp') }}" alt="Transkapman" class="card-icon">
+                            <span class="card-title">Transkapman</span>
+                            <span class="card-hint">Tap to flip</span>
+                        </div>
+                        <div class="divisi-card__back shadow-lg shadow-amber-900/40">
+                            <h3 class="card-back-title">Transkapman</h3>
+                            <p class="card-back-desc">
+                                Divisi yang bertanggung jawab atas pengadaan dan pengelolaan perlengkapan, pengaturan
+                                transportasi, serta menjaga keamanan dan ketertiban selama acara berlangsung.
+                            </p>
+                        </div>
                     </div>
                 </div>
-                <div class="title"><span>Transkapman</span></div>
             </div>
 
-            <!-- Acara -->
+            <!-- ── 4. Acara ── -->
             <div class="swiper-slide">
-                <div class="card-container">
-                    <div class="card-face card-front">
-                        <img src="{{ asset('assets/logo acara.webp') }}" alt="Acara">
-                        <div class="flip-hint">Click to flip</div>
-                    </div>
-                    <div class="card-face card-back">
-                        <h3>Acara</h3>
-                        <p>Divisi yang bertanggung jawab atas perencanaan konsep acara, penyusunan alur kegiatan, 
-                            serta pelaksanaan keseluruhan acara dari awal hingga akhir.</p>
+                <div class="divisi-card">
+                    <div class="divisi-card__inner">
+                        <div class="divisi-card__front shadow-lg shadow-rose-900/40">
+                            <img src="{{ asset('assets/logo acara.webp') }}" alt="Acara" class="card-icon">
+                            <span class="card-title">Acara</span>
+                            <span class="card-hint">Tap to flip</span>
+                        </div>
+                        <div class="divisi-card__back shadow-lg shadow-rose-900/40">
+                            <h3 class="card-back-title">Acara</h3>
+                            <p class="card-back-desc">
+                                Divisi yang bertanggung jawab atas perencanaan konsep acara, penyusunan alur kegiatan,
+                                serta pelaksanaan keseluruhan acara dari awal hingga akhir.
+                            </p>
+                        </div>
                     </div>
                 </div>
-                <div class="title"><span>Acara</span></div>
             </div>
 
-            <!-- Creative -->
+            <!-- ── 5. Creative ── -->
             <div class="swiper-slide">
-                <div class="card-container">
-                    <div class="card-face card-front">
-                        <img src="{{ asset('assets/logo creative.webp') }}" alt="Creative">
-                        <div class="flip-hint">Click to flip</div>
-                    </div>
-                    <div class="card-face card-back">
-                        <h3>Creative</h3>
-                        <p>Divisi yang mengelola visual dan kreativitas acara, termasuk desain konten, 
-                            dekorasi, dokumentasi, dan publikasi untuk meningkatkan daya tarik acara.</p>
+                <div class="divisi-card">
+                    <div class="divisi-card__inner">
+                        <div class="divisi-card__front shadow-lg shadow-fuchsia-900/40">
+                            <img src="{{ asset('assets/logo creative.webp') }}" alt="Creative" class="card-icon">
+                            <span class="card-title">Creative</span>
+                            <span class="card-hint">Tap to flip</span>
+                        </div>
+                        <div class="divisi-card__back shadow-lg shadow-fuchsia-900/40">
+                            <h3 class="card-back-title">Creative</h3>
+                            <p class="card-back-desc">
+                                Divisi yang mengelola visual dan kreativitas acara, termasuk desain konten, dekorasi,
+                                dokumentasi, dan publikasi untuk meningkatkan daya tarik acara.
+                            </p>
+                        </div>
                     </div>
                 </div>
-                <div class="title"><span>Creative</span></div>
             </div>
 
-            <!-- IT -->
+            <!-- ── 6. IT ── -->
             <div class="swiper-slide">
-                <div class="card-container">
-                    <div class="card-face card-front">
-                        <img src="{{ asset('assets/logo IT.webp') }}" alt="IT">
-                        <div class="flip-hint">Click to flip</div>
-                    </div>
-                    <div class="card-face card-back">
-                        <h3>IT</h3>
-                        <p>Divisi yang menangani kebutuhan teknis berbasis teknologi, seperti sistem pendaftaran, 
-                            pengelolaan data peserta, perangkan lomba, dan dukungan teknis selama acara.</p>
+                <div class="divisi-card">
+                    <div class="divisi-card__inner">
+                        <div class="divisi-card__front shadow-lg shadow-cyan-900/40">
+                            <img src="{{ asset('assets/logo IT.webp') }}" alt="IT" class="card-icon">
+                            <span class="card-title">IT</span>
+                            <span class="card-hint">Tap to flip</span>
+                        </div>
+                        <div class="divisi-card__back shadow-lg shadow-cyan-900/40">
+                            <h3 class="card-back-title">IT</h3>
+                            <p class="card-back-desc">
+                                Divisi yang menangani kebutuhan teknis berbasis teknologi, seperti sistem pendaftaran,
+                                pengelolaan data peserta, perangkat lomba, dan dukungan teknis selama acara.
+                            </p>
+                        </div>
                     </div>
                 </div>
-                <div class="title"><span>IT</span></div>
             </div>
 
-            <!-- Sekkonkes -->
+            <!-- ── 7. Sekkonkes ── -->
             <div class="swiper-slide">
-                <div class="card-container">
-                    <div class="card-face card-front">
-                        <img src="{{ asset('assets/logo sekkonkes.webp') }}" alt="sekkon">
-                        <div class="flip-hint">Click to flip</div>
-                    </div>
-                    <div class="card-face card-back">
-                        <h3>Sekkonkes</h3>
-                        <p>Divisi yang mengelola administrasi dan surat, mengatur konsumsi panitia dan peserta, 
-                            serta menangani kebutuhan kesehatan selama acara.</p>
+                <div class="divisi-card">
+                    <div class="divisi-card__inner">
+                        <div class="divisi-card__front shadow-lg shadow-lime-900/40">
+                            <img src="{{ asset('assets/logo sekkonkes.webp') }}" alt="Sekkonkes" class="card-icon">
+                            <span class="card-title">Sekkonkes</span>
+                            <span class="card-hint">Tap to flip</span>
+                        </div>
+                        <div class="divisi-card__back shadow-lg shadow-lime-900/40">
+                            <h3 class="card-back-title">Sekkonkes</h3>
+                            <p class="card-back-desc">
+                                Divisi yang mengelola administrasi dan surat, mengatur konsumsi panitia dan peserta,
+                                serta menangani kebutuhan kesehatan selama acara.
+                            </p>
+                        </div>
                     </div>
                 </div>
-                <div class="title"><span>Sekkonkes</span></div>
             </div>
 
-            {{-- pr --}}
+            <!-- ── 8. Public Relation ── -->
             <div class="swiper-slide">
-                <div class="card-container">
-                    <div class="card-face card-front">
-                        <img src="{{ asset('assets/logo PR.webp') }}" alt="pr">
-                        <div class="flip-hint">Click to flip</div>
-                    </div>
-                    <div class="card-face card-back">
-                        <h3>Public Relation</h3>
-                        <p> Divisi yang bertanggung jawab mengelola komunikasi dan informasi acara, serta membangun citra acara melalui media sosial, 
-                            publikasi informasi, dan hubungan peserta, sekolah, serta pihak terkait lainnya.</p>
+                <div class="divisi-card">
+                    <div class="divisi-card__inner">
+                        <div class="divisi-card__front shadow-lg shadow-blue-900/40">
+                            <img src="{{ asset('assets/logo PR.webp') }}" alt="Public Relation" class="card-icon">
+                            <span class="card-title">Public Relation</span>
+                            <span class="card-hint">Tap to flip</span>
+                        </div>
+                        <div class="divisi-card__back shadow-lg shadow-blue-900/40">
+                            <h3 class="card-back-title">Public Relation</h3>
+                            <p class="card-back-desc">
+                                Divisi yang bertanggung jawab mengelola komunikasi dan informasi acara, serta membangun
+                                citra acara melalui media sosial, publikasi informasi, dan hubungan peserta, sekolah,
+                                serta pihak terkait lainnya.
+                            </p>
+                        </div>
                     </div>
                 </div>
-                <div class="title"><span>Public Relation</span></div>
             </div>
         </div>
     </div>
 </section>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const divisiSwiper = new Swiper('#divisi-swiper', {
+            centeredSlides: true,
+            slidesPerView: 3,
+            spaceBetween: 150,
+            loop: true,
+            grabCursor: true,
+            speed: 400,
+            autoplay: {
+                delay: 2500,
+                disableOnInteraction: false,
+            },
+
+            breakpoints: {
+                420: {
+                    slidesPerView: 3,
+                    spaceBetween: 180,
+                },
+                640: {
+                    slidesPerView: 3,
+                    spaceBetween: 20,
+                },
+                1040: {
+                    slidesPerView: 5,
+                    spaceBetween: 20,
+                },
+            },
+        });
+
+        const cards = document.querySelectorAll('#divisi-swiper .divisi-card');
+
+        cards.forEach(function (card) {
+            card.addEventListener('click', function (e) {
+                e.stopPropagation();
+
+                this.classList.toggle('flipped');
+
+                const anyFlipped = document.querySelector(
+                    '#divisi-swiper .divisi-card.flipped'
+                );
+
+                if (anyFlipped) {
+                    divisiSwiper.autoplay.stop();
+                } else {
+                    divisiSwiper.autoplay.start();
+                }
+            });
+        });
+    });
+</script>

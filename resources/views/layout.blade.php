@@ -15,7 +15,9 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/css/tw-elements.min.css" />
     <script src="https://cdn.tailwindcss.com/3.3.0"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    {{--
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" /> --}}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css" />
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdn.datatables.net/2.0.2/css/dataTables.dataTables.css" />
@@ -25,15 +27,38 @@
     <script src="https://unpkg.com/split-type"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
-    {{-- @vite(['resources/scss/style.scss', 'resources/ts/interactiveElement.ts', 'resources/css/app.css']) --}}
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
     @yield('head')
     <style>
         *,
         *::before,
         *::after {
-            margin: 0;
-            padding: 0;
             box-sizing: border-box;
+        }
+
+        ::-webkit-scrollbar {
+            width: 10px;
+            height: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #26392d;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background-color: #5D6B62;
+            border-radius: 999px;
+            border: 2px solid #26392d;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background-color: #4f6f5c;
+        }
+
+        /* ===== Scrollbar (Firefox) ===== */
+        * {
+            scrollbar-width: thin;
+            scrollbar-color: #5D6B62 #26392d;
         }
 
         @font-face {
@@ -52,38 +77,40 @@
 
         @font-face {
             font-family: 'OrganettoUltraLight';
-            src: url('{{ asset('fonts/milker/organetto-ultralight.ttf') }}') format('opentype');
+            src: url('{{ asset('fonts/organetto-ultralight.ttf') }}') format('truetype');
             font-weight: normal;
             font-style: normal;
         }
 
         @font-face {
             font-family: 'ReturnoftheGrid';
-            src: url('{{ asset('fonts/return-of-the-grid.otf') }}') format('truetype');
+            src: url('{{ asset('fonts/return-of-the-grid.otf') }}') format('opentype');
             font-weight: normal;
             font-style: normal;
         }
 
         /* raleway-regular - latin */
         @font-face {
-        font-family: 'Raleway';
-        font-style: normal;
-        font-weight: 400;
-        src: url('{{ asset('fonts/raleway-v37-latin-regular.woff2') }}') format('woff2'); 
+            font-family: 'Raleway';
+            font-style: normal;
+            font-weight: 400;
+            src: url('{{ asset('fonts/raleway-v37-latin-regular.woff2') }}') format('woff2');
         }
+
         /* raleway-700 - latin */
         @font-face {
-        font-family: 'Raleway';
-        font-style: normal;
-        font-weight: 700;
-        src: url('{{ asset('fonts/raleway-v37-latin-700.woff2') }}') format('woff2'); 
+            font-family: 'Raleway';
+            font-style: normal;
+            font-weight: 700;
+            src: url('{{ asset('fonts/raleway-v37-latin-700.woff2') }}') format('woff2');
         }
+
         /* raleway-800 - latin */
-        @font-face { 
-        font-family: 'Raleway';
-        font-style: normal;
-        font-weight: 800;
-        src: url('{{ asset('fonts/raleway-v37-latin-800.woff2') }}') format('woff2'); 
+        @font-face {
+            font-family: 'Raleway';
+            font-style: normal;
+            font-weight: 800;
+            src: url('{{ asset('fonts/raleway-v37-latin-800.woff2') }}') format('woff2');
         }
 
         .font-raleway {
@@ -217,7 +244,9 @@
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/Flip.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    {{--
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script> --}}
+    <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
     <script src="https://cdn.datatables.net/2.0.2/js/dataTables.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
@@ -225,13 +254,17 @@
     <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.8.162/pdf.min.js"></script>
-    {{-- <script src="https://unpkg.com/@studio-freight/lenis@1.0.28/dist/lenis.min.js"></script> --}}
+    {{--
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.28/dist/lenis.min.js"></script> --}}
 
     @yield('script')
     <script>
-        AOS.init();
+        AOS.init({
+            once: true
+        });
     </script>
-    {{-- <script>
+    {{--
+    <script>
         const lenis = new Lenis({
             duration: 1.4,   // makin besar = makin lembut
             smooth: true,    // aktifkan efek halus

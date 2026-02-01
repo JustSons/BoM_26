@@ -107,10 +107,10 @@
     
     .list .list-item.current-section a {
         background: linear-gradient(90deg, rgba(74, 222, 128, 0.2), rgba(74, 222, 128, 0.05));
-        border-left: 4px solid #4ade80;
+        border-left: 4px solid #AEB5B1;
     }
-    .list .list-item.current-section a i { color: #4ade80; }
-    .list .list-item.current-section .link-name { color: #4ade80; }
+    .list .list-item.current-section a i { color: #AEB5B1; }
+    .list .list-item.current-section .link-name { color: #AEB5B1; }
 
     .auth-divider {
         margin: 10px 0;

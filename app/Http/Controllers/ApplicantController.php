@@ -594,6 +594,7 @@ private function getAllAvailableSchedules()
             DB::commit();
 
             // Kirim Email Notifikasi
+            Log::info("Mencoba kirim email ke: " . $adminSchedule->admin_nrp . '@john.petra.ac.id');
             try {
                 Mail::to($adminSchedule->admin_nrp . '@john.petra.ac.id')->queue(new ScheduleNotif([
                     'name' => $adminSchedule->admin_real_name,
@@ -601,7 +602,10 @@ private function getAllAvailableSchedules()
                     'tanggal' => Carbon::parse($schedule->tanggal)->format('d F Y'),
                     'jam' => $schedule->jam_mulai,
                     'isOnline' => $adminSchedule->isOnline,
+                    'lokasi' => $adminSchedule->location ?? 'Lokasi belum ditentukan',
+                    'link_gmeet' => $adminSchedule->link_gmeet ?? '-',
                 ]));
+                Log::info("Email berhasil masuk ke antrean (Queue).");
             } catch (\Exception $e) { Log::error("Email Error: " . $e->getMessage()); }
 
             return response()->json(['success' => true, 'message' => 'Jadwal berhasil disimpan!']);

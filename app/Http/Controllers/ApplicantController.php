@@ -578,7 +578,7 @@ private function getAllAvailableSchedules()
                       ->orWhere(DB::raw("'Divisi BPH (Slot Cadangan)'"), $request->division_group);
                 })
                 ->lockForUpdate()
-                ->select('admin_schedules.*', 'admins.name as admin_real_name', 'admins.nrp as admin_nrp')
+                ->select('admin_schedules.*', 'admins.name as admin_real_name', 'admins.nrp as admin_nrp', 'admin.location as location')
                 ->first();
 
             if (!$adminSchedule) {

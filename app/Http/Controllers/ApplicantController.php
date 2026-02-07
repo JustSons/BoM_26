@@ -433,7 +433,7 @@ public function jadwalIndex()
                     'mode' => $interview->isOnline,
                     'tanggal' => $interview->schedule->tanggal ?? null,
                     'jam' => $interview->schedule->jam_mulai ?? null,
-                    'id_line' => $interview->admin->id_line ?? null,
+                    'id_line' => $interview->admin->id_line ?? '@092sqzfy',
                 ];
             }
         } else {

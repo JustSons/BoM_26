@@ -33,18 +33,48 @@ class AdminSeeder extends Seeder
                 'position' => 'Ketua Battle Of Minds',
                 'anonymous_name' => 'Newton',
                 'id_line' => '040200604022006',
-                'link_gmeet' => 'https://meet.google.com/gwm-ssgq-phw',
+                'link_gmeet' => 'petra.id/Newton',
                 'location' => 'Selasar P4',
             ],
+            [
+                'name' => 'Joseph Wolfgang Winata',
+                'nrp' => 'C13240013',
+                'division_slug' => 'bph',
+                'position' => 'Sekretaris Battle Of Minds',
+                'anonymous_name' => 'Gauss',
+                'id_line' => 'jwolfgang',
+                'link_gmeet' => 'petra.id/Gauss',
+                'location' => 'Selasar P5',
+            ],
+            [
+                'name' => 'Etheldreda Gwyneth Widjaja',
+                'nrp' => 'B12240002',
+                'division_slug' => 'bph',
+                'position' => 'Bendahara Battle Of Minds',
+                'anonymous_name' => 'Bohr',
+                'link_gmeet' => 'petra.id/Bohr',
+                'location' => 'Selasar P8',
+            ],
             // Acara
+            [
+                'name' => 'Jessica Shine Utomo',
+                'nrp' => 'C13240020',
+                'division_slug' => 'acara',
+                'position' => 'koordinator',
+                'anonymous_name' => 'Pascal',
+                'id_line' => 'jessicashine11',
+                'link_gmeet' => 'petra.id/Pascal',
+                'location' => 'Selasar P1',
+            ],
             [
                 'name' => 'Elizabeth Barbie Tantama',
                 'nrp' => 'C14240104',
                 'division_slug' => 'acara',
                 'position' => 'sub koordinator',
-                'anonymous_name' => 'Neumann',
+                'anonymous_name' => 'Volta',
                 'id_line' => 'bazbethlalala',
-                'link_gmeet' => 'https://meet.google.com/fct-wyqg-mqc',
+                'link_gmeet' => 'petra.id/Volta',
+                'location' => 'Selasar P1',
             ],
             //Materi
             [
@@ -53,16 +83,18 @@ class AdminSeeder extends Seeder
                 'division_slug' => 'materi',
                 'position' => 'koordinator',
                 'anonymous_name' => 'Rosalind',
-                'link_gmeet' => 'https://meet.google.com/qsb-noeo-tjt',
+                'link_gmeet' => 'petra.id/Rosalind',
+                'location' => 'Selasar P6',
             ],
             [
-                'name' => 'Allesia Pruedence Handoyo ',
+                'name' => 'Allesia Pruedence Handoyo',
                 'nrp' => 'C13240007',
                 'division_slug' => 'materi',
                 'position' => 'sub koordinator',
                 'anonymous_name' => 'Lovelace',
                 'id_line' => 'allpruedent45',
-                'link_gmeet' => 'https://meet.google.com/tbc-tsap-bsu',
+                'link_gmeet' => 'petra.id/Lovelace',
+                'location' => 'Selasar P6',
             ],
             // Creative
             [
@@ -72,7 +104,7 @@ class AdminSeeder extends Seeder
                 'position' => 'koordinator',
                 'anonymous_name' => 'Alexander',
                 'id_line' => 'rafferta1212',
-                'link_gmeet' => 'https://meet.google.com/zjh-eeki-vrn',
+                'link_gmeet' => 'petra.id/Alexander',
                 'location' => 'P2 Lab Studio',
             ],
             [
@@ -82,8 +114,19 @@ class AdminSeeder extends Seeder
                 'position' => 'sub koordinator',
                 'anonymous_name' => 'Tesla',
                 'location' => 'Selasar Q',
+                'id_line' => 'aileen.gunawan',
             ],
             // Transkapman
+            [
+                'name' => 'Matthew Christian Noto',
+                'nrp' => 'C13240027',
+                'division_slug' => 'transkapman',
+                'position' => 'koordinator',
+                'anonymous_name' => 'Bell',
+                'id_line' => 'morris_toosoon',
+                'link_gmeet' => 'petra.id/Bell',
+                'location' => 'Selasar P5',
+            ],
             [
                 'name' => 'Jovan Keandre Tan',
                 'nrp' => 'C13240001',
@@ -91,7 +134,7 @@ class AdminSeeder extends Seeder
                 'position' => 'sub koordinator',
                 'anonymous_name' => 'Darwin',
                 'id_line' => 'jovankeandre',
-                'link_gmeet' => 'https://meet.google.com/zzs-pxna-evr',
+                'link_gmeet' => 'petra.id/Darwin',
                 'location' => 'Selasar P5',
             ],
             // Sekkonkes
@@ -102,7 +145,7 @@ class AdminSeeder extends Seeder
                 'position' => 'koordinator',
                 'anonymous_name' => 'Noether',
                 'id_line' => 'shannonalidinata',
-                'link_gmeet' => 'https://meet.google.com/xru-vyxg-yoj',
+                'link_gmeet' => 'petra.id/Noether',
                 'location' => 'Selasar P8',
             ],
             [
@@ -112,7 +155,7 @@ class AdminSeeder extends Seeder
                 'position' => 'sub koordinator',
                 'anonymous_name' => 'Leavitt',
                 'id_line' => 'shannonxian',
-                'link_gmeet' => 'https://meet.google.com/wts-chso-weh',
+                'link_gmeet' => 'petra.id/Leavitt',
                 'location' => 'Selasar P8',
             ],
             // Public Relation
@@ -131,6 +174,8 @@ class AdminSeeder extends Seeder
                 'position' => 'wakil koordinator',
                 'anonymous_name' => 'Galilei',
                 'id_line' => 'im_edelyne',
+                'link_gmeet' => 'petra.id/Galilei',
+                'location' => 'Light Q',
             ],
             // Sponsor
             [
@@ -140,7 +185,7 @@ class AdminSeeder extends Seeder
                 'position' => 'koordinator',
                 'anonymous_name' => 'Einstein',
                 'id_line' => 'tifgs',
-                'link_gmeet' => 'https://meet.google.com/gmb-vmgx-cqv',
+                'link_gmeet' => 'petra.id/Einstein',
                 'location' => 'Kolam Jodoh W',
             ],
             [
@@ -150,7 +195,7 @@ class AdminSeeder extends Seeder
                 'position' => 'wakil koordinator',
                 'anonymous_name' => 'Marie',
                 'id_line' => 'clarissaalexandra_28',
-                'link_gmeet' => 'https://meet.google.com/mqi-qjeh-sbd',
+                'link_gmeet' => 'petra.id/Marie',
                 'location' => 'Kolam Jodoh W',
             ],
             // IT
@@ -161,7 +206,7 @@ class AdminSeeder extends Seeder
                 'position' => 'koordinator',
                 'anonymous_name' => 'Schrodinger',
                 'id_line' => 'jasonm25',
-                'link_gmeet' => 'https://meet.google.com/dtk-bawd-qiy',
+                'link_gmeet' => 'petra.id/Schrodinger',
                 'location' => 'Selasar P7',
             ],
             [
@@ -171,7 +216,7 @@ class AdminSeeder extends Seeder
                 'position' => 'wakil koordinator',
                 'anonymous_name' => 'Faraday',
                 'id_line' => 'baksoman',
-                'link_gmeet' => 'https://meet.google.com/oyk-ttqv-rvx',
+                'link_gmeet' => 'petra.id/Faraday',
                 'location' => 'Selasar P7',
             ]
         ];
@@ -179,16 +224,18 @@ class AdminSeeder extends Seeder
         foreach ($adminsData as $adminData) {
             // Check if the division slug exists in our fetched collection
             if (isset($divisions[$adminData['division_slug']])) {
-                Admin::create([
-                    'name' => $adminData['name'],
-                    'nrp' => $adminData['nrp'],
-                    'position' => $adminData['position'],
-                    'anonymous_name' => $adminData['anonymous_name'],
-                    'division_id' => $divisions[$adminData['division_slug']]->id,
-                    'id_line' => $adminData['id_line'] ?? null,
-                    'link_gmeet' => $adminData['link_gmeet'] ?? null,
-                    'location' => $adminData['location'] ?? null,
-                ]);
+                Admin::updateOrCreate(
+                    ['nrp' => $adminData['nrp']], 
+                    [
+                        'name' => $adminData['name'],
+                        'position' => $adminData['position'],
+                        'anonymous_name' => $adminData['anonymous_name'],
+                        'division_id' => $divisions[$adminData['division_slug']]->id,
+                        'id_line' => $adminData['id_line'] ?? null,
+                        'link_gmeet' => $adminData['link_gmeet'] ?? null,
+                        'location' => $adminData['location'] ?? null,
+                    ]
+                );
             }
         }
     }

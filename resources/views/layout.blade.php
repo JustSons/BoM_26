@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
-        content="Petra Civil Expo 2026 — ajang kompetisi, workshop, dan seminar teknik sipil terbesar di Universitas Kristen Petra. Lomba ini terbuka untuk seluruh siswa SMA dan mahasiswa teknik sipil di Indonesia dengan berbagai tiga bidang lomba menarik dan hadiah yang menarik. Bergabunglah sekarang dan tunjukkan kemampuan terbaikmu di dunia teknik sipil!">
+        content="Battle Of Minds 2026 — hadir sebagai lomba matematika dan logika yang dirancang sesuai dengan karakter siswa/i SMA. Lomba ini bertujuan untuk membantu siswa/i terus berkembang, melatih kemampuan berpikir logis, serta menumbuhkan semangat belajar dan kerja sama dalam bidang akademik.">
 
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>BoM 2026</title>

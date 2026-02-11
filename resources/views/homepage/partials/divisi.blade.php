@@ -251,7 +251,7 @@
     }
 </style>
 
-<section class="relative w-full py-16 sm:py-24 overflow-hidden">
+<section id="divisi" class="relative w-full py-16 sm:py-24 overflow-hidden">
 
     <!-- Section Title -->
     <div class="text-center mb-10 px-4" data-aos="fade-up">

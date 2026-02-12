@@ -126,7 +126,7 @@
                         </div>
                         <div>
                             <label for="ipk"
-                                class="font-organetto block mb-2 text-sm sm:text-base font-semibold text-white uppercase tracking-wider">IPK <small class="text-muted">(Angkatan 25 bisa diisi 0)</small></label>
+                                class="font-organetto block mb-2 text-sm sm:text-base font-semibold text-white uppercase tracking-wider">IPK</label>
                             <input type="number" id="ipk" name="ipk" placeholder="Co: 3.45" step="0.01" min="0" max="4"
                                 class="w-full px-4 py-2.5 bg-transparent border border-[#d3d5d2] rounded-full text-white text-sm sm:text-base placeholder-[#6f8c55] transition-all duration-300 focus:outline-none focus:border-[#6f8c55] focus:shadow-[0_0_12px_#6f8c55]"
                                 required />

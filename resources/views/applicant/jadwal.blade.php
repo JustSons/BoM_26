@@ -220,7 +220,7 @@
                     ${interviews.interview1.mode ? `
                     <div class="grid grid-cols-[40%_60%] gap-2">
                         <span class="font-organetto font-semibold text-[#d19537] min-w-[140px] text-xs md:text-lg">Link GMeet</span>
-                        <span class="font-organetto text-white text-xs md:text-lg">: <a href="${interviews.interview1.link_gmeet || '#'}" target="_blank" class="underline break-all text-teal-300 hover:text-teal-100">${interviews.interview1.link_gmeet || "N/A"}</a></span>
+                        <span class="font-organetto text-white text-xs md:text-lg">: <a href="${interviews.interview1.link_gmeet && !interviews.interview1.link_gmeet.startsWith('http') ? 'https://' + interviews.interview1.link_gmeet : (interviews.interview1.link_gmeet || '#')}" target="_blank" class="underline break-all text-teal-300 hover:text-teal-100">${interviews.interview1.link_gmeet || "N/A"}</a></span>
                     </div>
                     ` : `
                     <div class="grid grid-cols-[40%_60%] gap-2">

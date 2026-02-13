@@ -47,7 +47,7 @@ class ApplicantController extends Controller
             // phase 2 -> selesai, semua tuntas (kita sebut step 4)
             $currentStep = $applicant->phase + 2;
         }
-        if($applicant){
+        if ($applicant) {
             $data['prodi'] = $applicant->prodi;
             $data['line_id'] = $applicant->line_id;
             $data['no_hp'] = $applicant->no_hp;
@@ -156,7 +156,7 @@ class ApplicantController extends Controller
             // phase 2 -> selesai, semua tuntas (kita sebut step 4)
             $currentStep = $applicant->phase + 2;
         }
-        if($isExists){
+        if ($isExists) {
             $applicant = Applicant::with('applicantFile')->where('nrp', $nrp)->first();
             $data['ktm'] = $applicant->applicantFile->ktm ? Storage::url($applicant->applicantFile->ktm) : null;
             $data['transkrip'] = $applicant->applicantFile->transkrip ? Storage::url($applicant->applicantFile->transkrip) : null;
@@ -315,8 +315,8 @@ class ApplicantController extends Controller
         }
 
         $creativeId = Division::where('slug', 'creative')->first()->id;
-        $isJoinCreative = 
-            $applicant->division_choice1 == $creativeId || 
+        $isJoinCreative =
+            $applicant->division_choice1 == $creativeId ||
             $applicant->division_choice2 == $creativeId;
 
         // hanya validasi jika dia ikut creative
@@ -378,7 +378,7 @@ class ApplicantController extends Controller
             }
         }
 
-        if($applicant->phase == 0) {
+        if ($applicant->phase == 0) {
             $applicant->phase = 1;
             $applicant->save();
 
@@ -395,7 +395,7 @@ class ApplicantController extends Controller
         ]);
     }
 
-public function jadwalIndex()
+    public function jadwalIndex()
     {
         $title = 'Jadwal Interview';
         $nrp = Session::get('nrp');
@@ -404,26 +404,26 @@ public function jadwalIndex()
         if (!$applicant) {
             return redirect()->route('login')->with('error', 'Data pendaftar tidak ditemukan.');
         }
-        
+
         $currentStep = $applicant->phase + 2;
         $isExists = AdminSchedule::where('applicant_id', $applicant->id)->exists();
 
         // Ambil CP Line ID dari Koordinator Divisi Choice 1
         $adminsDivisi1 = Admin::where('division_id', $applicant->division_choice1)
-                               ->where('position', 'koordinator')
-                               ->first();
+            ->where('position', 'koordinator')
+            ->first();
 
-        $contactPersonLineId = $adminsDivisi1->id_line ?? '@092sqzfy'; 
-        
+        $contactPersonLineId = $adminsDivisi1->id_line ?? '@092sqzfy';
+
         $interviews = [];
         $schedules = collect();
         $divisionName = '';
-        
+
         if ($isExists) {
             $interview = AdminSchedule::with(['admin', 'schedule'])
                 ->where('applicant_id', $applicant->id)
                 ->first();
-                
+
             if ($interview) {
                 $interviews['interview1'] = [
                     'division' => $applicant->division1->name . ($applicant->division2 ? ' & ' . $applicant->division2->name : ''),
@@ -444,34 +444,38 @@ public function jadwalIndex()
             $divisionId2 = $applicant->division_choice2;
             $bphId = Division::where('slug', 'bph')->value('id');
 
-            $schedulesDiv1 = $allSchedules->where('division_id', $divisionId1);
+            // $schedulesDiv1 = $allSchedules->where('division_id', $divisionId1);
             $schedulesDiv2 = $divisionId2 ? $allSchedules->where('division_id', $divisionId2) : collect();
-            $schedulesBph = $allSchedules->where('division_id', $bphId);
+            // $schedulesBph = $allSchedules->where('division_id', $bphId);
 
-            // Prioritas 1: Divisi Pilihan 1
-            if ($schedulesDiv1->isNotEmpty()) {
-                $schedules = $schedulesDiv1;
-                $divisionName = $applicant->division1->name;
-            } 
+            // Prioritas 1: Divisi Pilihan 1 + BPH (digabung)
+            $schedulesPrimary = $allSchedules->whereIn('division_id', [$divisionId1, $bphId]);
+
+            if ($schedulesPrimary->isNotEmpty()) {
+                $schedules = $schedulesPrimary;
+                $divisionName = $applicant->division1->name . ' & BPH';
+            }
             // Prioritas 2: Divisi Pilihan 2
             else if ($schedulesDiv2->isNotEmpty()) {
                 $schedules = $schedulesDiv2;
                 $divisionName = $applicant->division2->name;
-            } 
+            }
             // Prioritas 3: BPH (Slot Cadangan Umum)
-            else if ($schedulesBph->isNotEmpty()) {
-                $schedules = $schedulesBph;
-                $divisionName = 'Divisi BPH (Slot Cadangan)';
-            } 
+            // else if ($schedulesBph->isNotEmpty()) {
+            //     $schedules = $schedulesBph;
+            //     $divisionName = 'Divisi BPH (Slot Cadangan)';
+            // } 
 
             if ($schedules->isEmpty()) {
                 // Email otomatis ke koordinator jika jadwal habis
                 if ($adminsDivisi1) {
                     try {
                         Mail::to($adminsDivisi1->nrp . '@john.petra.ac.id')->queue(new NoScheduleAvailable($applicant));
-                    } catch (\Exception $e) { Log::error($e->getMessage()); }
+                    } catch (\Exception $e) {
+                        Log::error($e->getMessage());
+                    }
                 }
-                
+
                 return view('applicant.jadwal', [
                     'title' => $title,
                     'schedules' => [],
@@ -484,7 +488,7 @@ public function jadwalIndex()
                 ]);
             }
         }
-        
+
         return view('applicant.jadwal', [
             'title' => $title,
             'schedules' => $schedules->values(),
@@ -496,28 +500,28 @@ public function jadwalIndex()
         ]);
     }
 
-private function getAllAvailableSchedules()
-{
-    // Gunakan startOfDay agar jam saat ini tidak memotong pencarian tanggal hari ini
-    $today = Carbon::now('Asia/Jakarta')->startOfDay();
-    
-    return AdminSchedule::select(
-            'admin_schedules.id as admin_schedule_id', 
-            'schedules.tanggal', 
-            'schedules.jam_mulai', 
+    private function getAllAvailableSchedules()
+    {
+        // Gunakan startOfDay agar jam saat ini tidak memotong pencarian tanggal hari ini
+        $today = Carbon::now('Asia/Jakarta')->startOfDay();
+
+        return AdminSchedule::select(
+            'admin_schedules.id as admin_schedule_id',
+            'schedules.tanggal',
+            'schedules.jam_mulai',
             'admin_schedules.isOnline',
             'admins.id_line',
             'admins.division_id'
         )
-        ->join('schedules', 'admin_schedules.schedule_id', '=', 'schedules.id')
-        ->join('admins', 'admin_schedules.admin_id', '=', 'admins.id')
-        ->whereNull('admin_schedules.applicant_id')
-        // Pastikan format tanggal sesuai YYYY-MM-DD
-        ->where('schedules.tanggal', '>=', $today->toDateString())
-        ->orderBy('schedules.tanggal', 'asc')
-        ->orderBy('schedules.jam_mulai', 'asc')
-        ->get();
-}
+            ->join('schedules', 'admin_schedules.schedule_id', '=', 'schedules.id')
+            ->join('admins', 'admin_schedules.admin_id', '=', 'admins.id')
+            ->whereNull('admin_schedules.applicant_id')
+            // Pastikan format tanggal sesuai YYYY-MM-DD
+            ->where('schedules.tanggal', '>=', $today->toDateString())
+            ->orderBy('schedules.tanggal', 'asc')
+            ->orderBy('schedules.jam_mulai', 'asc')
+            ->get();
+    }
     public function storeJadwal(Request $request)
     {
         $val = Validator::make($request->all(), [
@@ -533,7 +537,7 @@ private function getAllAvailableSchedules()
 
         $nrp = Session::get('nrp');
         $applicant = Applicant::where('nrp', $nrp)->first();
-        
+
         if (!$applicant) return response()->json(['success' => false, 'message' => 'User tidak ditemukan'], 404);
         if (AdminSchedule::where('applicant_id', $applicant->id)->exists()) {
             return response()->json(['success' => false, 'message' => 'Anda sudah memiliki jadwal.']);
@@ -542,11 +546,11 @@ private function getAllAvailableSchedules()
         // VALIDASI H-1 JAM 21:00
         $now = Carbon::now('Asia/Jakarta');
         $chosenDate = Carbon::parse($request->tanggal_choice);
-        
+
         // Jika memilih jadwal besok, tapi sekarang sudah lewat jam 21:00
         if ($now->hour >= 21 && $chosenDate->isTomorrow()) {
             return response()->json([
-                'success' => false, 
+                'success' => false,
                 'message' => 'Pemesanan jadwal untuk besok ditutup setiap jam 21:00. Silakan pilih tanggal lain.'
             ]);
         }
@@ -561,25 +565,38 @@ private function getAllAvailableSchedules()
 
         try {
             DB::beginTransaction();
-            
+
             $schedule = Schedule::where('tanggal', $request->tanggal_choice)
                 ->where('jam_mulai', $request->jam_choice)
                 ->first();
 
-            // Cari slot Admin yang tersedia di divisi yang sesuai dengan division_group
+            if (!$schedule) {
+                throw new \Exception('Jadwal tidak ditemukan.');
+            }
+
+            // Prioritas 1: Koordinator divisi pilihan 1
             $adminSchedule = AdminSchedule::join('admins', 'admin_schedules.admin_id', '=', 'admins.id')
-                ->join('divisions', 'admins.division_id', '=', 'divisions.id')
                 ->where('admin_schedules.schedule_id', $schedule->id)
                 ->where('admin_schedules.isOnline', (int) $request->interview_mode)
                 ->whereNull('admin_schedules.applicant_id')
-                // Mencocokkan dengan nama divisi yang tampil di UI (division_group)
-                ->where(function($q) use ($request) {
-                    $q->where('divisions.name', $request->division_group)
-                      ->orWhere(DB::raw("'Divisi BPH (Slot Cadangan)'"), $request->division_group);
-                })
+                ->where('admins.division_id', $applicant->division_choice1)
+                ->where('admins.position', 'koordinator')
                 ->lockForUpdate()
                 ->select('admin_schedules.*', 'admins.name as admin_real_name', 'admins.nrp as admin_nrp', 'admins.location as location', 'admins.link_gmeet as link_gmeet')
                 ->first();
+
+            // Prioritas 2: Admin lain dari divisi pilihan 1 atau BPH
+            if (!$adminSchedule) {
+                $bphId = Division::where('slug', 'bph')->value('id');
+                $adminSchedule = AdminSchedule::join('admins', 'admin_schedules.admin_id', '=', 'admins.id')
+                    ->where('admin_schedules.schedule_id', $schedule->id)
+                    ->where('admin_schedules.isOnline', (int) $request->interview_mode)
+                    ->whereNull('admin_schedules.applicant_id')
+                    ->whereIn('admins.division_id', [$applicant->division_choice1, $bphId])
+                    ->lockForUpdate()
+                    ->select('admin_schedules.*', 'admins.name as admin_real_name', 'admins.nrp as admin_nrp', 'admins.location as location', 'admins.link_gmeet as link_gmeet')
+                    ->first();
+            }
 
             if (!$adminSchedule) {
                 throw new \Exception('Maaf, slot ini baru saja diambil orang lain. Silakan pilih jam lain.');
@@ -606,10 +623,11 @@ private function getAllAvailableSchedules()
                     'link_gmeet' => $adminSchedule->link_gmeet ?? '-',
                 ]));
                 Log::info("Email berhasil masuk ke antrean (Queue).");
-            } catch (\Exception $e) { Log::error("Email Error: " . $e->getMessage()); }
+            } catch (\Exception $e) {
+                Log::error("Email Error: " . $e->getMessage());
+            }
 
             return response()->json(['success' => true, 'message' => 'Jadwal berhasil disimpan!']);
-
         } catch (\Exception $e) {
             DB::rollBack();
             return response()->json(['success' => false, 'message' => $e->getMessage()], 500);
@@ -650,5 +668,4 @@ private function getAllAvailableSchedules()
                 return redirect()->route('applicant.homepage');
         }
     }
-
 }

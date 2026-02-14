@@ -121,9 +121,9 @@ class ApplicantController extends Controller
         //     return response()->json(['success' => false, 'message' => 'Divisi Transkapman sudah penuh, silakan pilih divisi lain.']);
         // }
 
-        // if ($data['division_choice1'] === $data['division_choice2']) {
-        //     return response()->json(['success' => false, 'message' => 'Divisi tidak boleh sama']);
-        // }
+        if ($data['division_choice1'] === $data['division_choice2']) {
+            return response()->json(['success' => false, 'message' => 'Divisi tidak boleh sama']);
+        }
 
         $division1 = Division::where('slug', $data['division_choice1'])->first();
         $division2 = Division::where('slug', $data['division_choice2'])->first();

@@ -574,25 +574,28 @@ class ApplicantController extends Controller
                 throw new \Exception('Jadwal tidak ditemukan.');
             }
 
-            // Prioritas 1: Koordinator divisi pilihan 1
+            $bphId = Division::where('slug', 'bph')->value('id');
+
             $adminSchedule = AdminSchedule::join('admins', 'admin_schedules.admin_id', '=', 'admins.id')
                 ->where('admin_schedules.schedule_id', $schedule->id)
                 ->where('admin_schedules.isOnline', (int) $request->interview_mode)
                 ->whereNull('admin_schedules.applicant_id')
-                ->where('admins.division_id', $applicant->division_choice1)
-                ->where('admins.position', 'koordinator')
+                ->whereIn('admins.division_id', [$applicant->division_choice1, $bphId])
+                ->orderByRaw("CASE 
+                    WHEN admins.division_id = ? AND admins.position = 'koordinator' THEN 1 
+                    WHEN admins.division_id = ? THEN 2 
+                    ELSE 3 
+                END", [$applicant->division_choice1, $applicant->division_choice1])
                 ->lockForUpdate()
                 ->select('admin_schedules.*', 'admins.name as admin_real_name', 'admins.nrp as admin_nrp', 'admins.location as location', 'admins.link_gmeet as link_gmeet')
                 ->first();
 
-            // Prioritas 2: Admin lain dari divisi pilihan 1 atau BPH
-            if (!$adminSchedule) {
-                $bphId = Division::where('slug', 'bph')->value('id');
+            if (!$adminSchedule && $applicant->division_choice2) {
                 $adminSchedule = AdminSchedule::join('admins', 'admin_schedules.admin_id', '=', 'admins.id')
                     ->where('admin_schedules.schedule_id', $schedule->id)
                     ->where('admin_schedules.isOnline', (int) $request->interview_mode)
                     ->whereNull('admin_schedules.applicant_id')
-                    ->whereIn('admins.division_id', [$applicant->division_choice1, $bphId])
+                    ->where('admins.division_id', $applicant->division_choice2)
                     ->lockForUpdate()
                     ->select('admin_schedules.*', 'admins.name as admin_real_name', 'admins.nrp as admin_nrp', 'admins.location as location', 'admins.link_gmeet as link_gmeet')
                     ->first();

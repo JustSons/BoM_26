@@ -92,7 +92,7 @@
                     @for ($hour = 7; $hour <= 20; $hour++)
                     <tr>
                         <td class="border px-4 py-2">{{ $hour }}:30</td>
-                        @for ($i = 9; $i <= 18; $i++)
+                        @for ($i = 9; $i <= 25; $i++)
                         <td 
                             class="slot border" 
                             data-date="{{ '2026-02-' . str_pad($i, 2, '0', STR_PAD_LEFT) }}" 

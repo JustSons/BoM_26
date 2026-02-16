@@ -79,7 +79,7 @@
                     <tr>
                         <th class="border px-4 py-2">Jam/Hari</th>
                         <!-- Looping untuk menampilkan tanggal (misal dari 4-18 Oktober) -->
-                        @for ($i = 9; $i <= 18; $i++)
+                        @for ($i = 9; $i <= 25; $i++)
                             <th class="border px-4 py-2">{{ $i }} Februari</th>
                         @endfor
                         {{-- @for ($i = 1; $i <= 4; $i++)

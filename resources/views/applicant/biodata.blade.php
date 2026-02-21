@@ -236,7 +236,6 @@
                                 <option class="bg-[#6f8c55]" value="pr">Public Relations</option>
                                 <option class="bg-[#6f8c55]" value="creative">Creative</option>
                                 <option class="bg-[#6f8c55]" value="sponsor">Sponsorship</option>
-                                <option class="bg-[#6f8c55]" value="sekkonkes">Sekkonkes</option>
                                 <option class="bg-[#6f8c55]" value="transkapman">Transkapman</option>
                                 <option class="bg-[#6f8c55]" value="materi">Materi</option>
                                 <option class="bg-[#6f8c55]" value="it">IT</option>

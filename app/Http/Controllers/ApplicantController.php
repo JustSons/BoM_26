@@ -547,13 +547,13 @@ class ApplicantController extends Controller
         $now = Carbon::now('Asia/Jakarta');
         $chosenDate = Carbon::parse($request->tanggal_choice);
 
-        // Jika memilih jadwal besok, tapi sekarang sudah lewat jam 21:00
-        if ($now->hour >= 21 && $chosenDate->isTomorrow()) {
-            return response()->json([
-                'success' => false,
-                'message' => 'Pemesanan jadwal untuk besok ditutup setiap jam 21:00. Silakan pilih tanggal lain.'
-            ]);
-        }
+        // // Jika memilih jadwal besok, tapi sekarang sudah lewat jam 21:00
+        // if ($now->hour >= 21 && $chosenDate->isTomorrow()) {
+        //     return response()->json([
+        //         'success' => false,
+        //         'message' => 'Pemesanan jadwal untuk besok ditutup setiap jam 21:00. Silakan pilih tanggal lain.'
+        //     ]);
+        // }
 
         // Validasi tambahan: Tidak bisa pilih jadwal yang jamnya sudah lewat hari ini
         if ($chosenDate->isToday()) {
